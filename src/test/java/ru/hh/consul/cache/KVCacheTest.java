@@ -17,7 +17,6 @@ import retrofit2.Retrofit;
 import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.MockRetrofit;
 import retrofit2.mock.NetworkBehavior;
-import ru.hh.consul.Consul;
 import ru.hh.consul.KeyValueClient;
 import ru.hh.consul.KeyValueClientFactory;
 import ru.hh.consul.MockApiService;
@@ -96,7 +95,7 @@ public class KVCacheTest {
 
         final KeyValueClient kvClient = KeyValueClientFactory.create(mockApiService, new ClientConfig(cacheConfig),
                 new ClientEventCallback() {
-        }, new Consul.NetworkTimeoutConfig.Builder().withReadTimeout(10500).build());
+        });
 
 
         try (final KVCache kvCache = KVCache.newCache(kvClient, "")) {

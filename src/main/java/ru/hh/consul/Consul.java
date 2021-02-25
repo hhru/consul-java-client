@@ -14,7 +14,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import java.util.function.IntSupplier;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
@@ -276,7 +275,9 @@ public class Consul {
         private Interceptor headerInterceptor;
         private Interceptor consulBookendInterceptor;
         private Interceptor consulFailoverInterceptor;
-        private final NetworkTimeoutConfig.Builder networkTimeoutConfigBuilder = new NetworkTimeoutConfig.Builder();
+        private Long connectTimeoutMillis;
+        private Long readTimeoutMillis;
+        private Long writeTimeoutMillis;
         private ExecutorService executorService;
         private ConnectionPool connectionPool;
         private ClientConfig clientConfig;
@@ -494,10 +495,10 @@ public class Consul {
          * @return The builder.
          */
         public Builder withFailoverInterceptor(ConsulFailoverStrategy strategy) {
-        	Preconditions.checkArgument(strategy != null, "Must not provide a null strategy");
-        	
-        	consulFailoverInterceptor = new ConsulFailoverInterceptor(strategy);
-        	return this;
+          Preconditions.checkArgument(strategy != null, "Must not provide a null strategy");
+
+          consulFailoverInterceptor = new ConsulFailoverInterceptor(strategy);
+          return this;
         }
 
         /**
@@ -571,7 +572,7 @@ public class Consul {
         */
         public Builder withConnectTimeoutMillis(long timeoutMillis) {
             Preconditions.checkArgument(timeoutMillis >= 0, "Negative value");
-            this.networkTimeoutConfigBuilder.withConnectTimeout((int) timeoutMillis);
+            this.connectTimeoutMillis = timeoutMillis;
             return this;
         }
 
@@ -582,7 +583,7 @@ public class Consul {
         */
         public Builder withReadTimeoutMillis(long timeoutMillis) {
             Preconditions.checkArgument(timeoutMillis >= 0, "Negative value");
-            this.networkTimeoutConfigBuilder.withReadTimeout((int) timeoutMillis);
+            this.readTimeoutMillis = timeoutMillis;
 
             return this;
         }
@@ -594,7 +595,7 @@ public class Consul {
         */
         public Builder withWriteTimeoutMillis(long timeoutMillis) {
             Preconditions.checkArgument(timeoutMillis >= 0, "Negative value");
-            this.networkTimeoutConfigBuilder.withWriteTimeout((int) timeoutMillis);
+            this.writeTimeoutMillis = timeoutMillis;
 
             return this;
         }
@@ -607,7 +608,8 @@ public class Consul {
         * It can only be shutdown by the {@link Consul#destroy()} method.
         *
         * When an application needs to be able to customize the ExecutorService parameters, and/or manage its lifecycle,
-        * it can provide an instance of ExecutorService to the Builder. In that case, this ExecutorService will be used instead of creating one internally.
+        * it can provide an instance of ExecutorService to the Builder. In that case,
+        * this ExecutorService will be used instead of creating one internally.
         *
         * @param executorService The ExecutorService to be injected in the internal tasks dispatcher.
         * @return
@@ -627,7 +629,8 @@ public class Consul {
         * It can only be shutdown by the {@link Consul#destroy()} method.
         *
         * When an application needs to be able to customize the ConnectionPool parameters, and/or manage its lifecycle,
-        * it can provide an instance of ConnectionPool to the Builder. In that case, this ConnectionPool will be used instead of creating one internally.
+        * it can provide an instance of ConnectionPool to the Builder. In that case,
+        * this ConnectionPool will be used instead of creating one internally.
         *
         * @param connectionPool The ConnetcionPool to be injected in the internal  OkHttpClient
         * @return
@@ -697,11 +700,6 @@ public class Consul {
                     executorService,
                     connectionPool,
                     config);
-            NetworkTimeoutConfig networkTimeoutConfig = new NetworkTimeoutConfig.Builder()
-                .withConnectTimeout(okHttpClient::connectTimeoutMillis)
-                .withReadTimeout(okHttpClient::readTimeoutMillis)
-                .withWriteTimeout(okHttpClient::writeTimeoutMillis)
-                .build();
 
             try {
                 retrofit = createRetrofit(
@@ -717,9 +715,9 @@ public class Consul {
                     new ClientEventCallback(){};
 
             AgentClient agentClient = new AgentClient(retrofit, config, eventCallback);
-            HealthClient healthClient = new HealthClient(retrofit, config, eventCallback, networkTimeoutConfig);
-            KeyValueClient keyValueClient = new KeyValueClient(retrofit, config, eventCallback, networkTimeoutConfig);
-            CatalogClient catalogClient = new CatalogClient(retrofit, config, eventCallback, networkTimeoutConfig);
+            HealthClient healthClient = new HealthClient(retrofit, config, eventCallback);
+            KeyValueClient keyValueClient = new KeyValueClient(retrofit, config, eventCallback);
+            CatalogClient catalogClient = new CatalogClient(retrofit, config, eventCallback);
             StatusClient statusClient = new StatusClient(retrofit, config, eventCallback);
             SessionClient sessionClient = new SessionClient(retrofit, config, eventCallback);
             EventClient eventClient = new EventClient(retrofit, config, eventCallback);
@@ -743,7 +741,8 @@ public class Consul {
         }
 
         private OkHttpClient createOkHttpClient(SSLContext sslContext, X509TrustManager trustManager, HostnameVerifier hostnameVerifier,
-                                                Proxy proxy, ExecutorService executorService, ConnectionPool connectionPool, ClientConfig clientConfig) {
+                                                Proxy proxy, ExecutorService executorService, ConnectionPool connectionPool,
+                                                ClientConfig clientConfig) {
 
             final OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
@@ -780,17 +779,16 @@ public class Consul {
             if(proxy != null) {
                 builder.proxy(proxy);
             }
-            NetworkTimeoutConfig networkTimeoutConfig = networkTimeoutConfigBuilder.build();
-            if (networkTimeoutConfig.getClientConnectTimeoutMillis() >= 0) {
-                builder.connectTimeout(networkTimeoutConfig.getClientConnectTimeoutMillis(), TimeUnit.MILLISECONDS);
+            if (connectTimeoutMillis != null) {
+                builder.connectTimeout(connectTimeoutMillis, TimeUnit.MILLISECONDS);
             }
 
-            if (networkTimeoutConfig.getClientReadTimeoutMillis() >= 0) {
-                builder.readTimeout(networkTimeoutConfig.getClientReadTimeoutMillis(), TimeUnit.MILLISECONDS);
+            if (readTimeoutMillis != null) {
+                builder.readTimeout(readTimeoutMillis, TimeUnit.MILLISECONDS);
             }
 
-            if (networkTimeoutConfig.getClientWriteTimeoutMillis() >= 0) {
-                builder.writeTimeout(networkTimeoutConfig.getClientWriteTimeoutMillis(), TimeUnit.MILLISECONDS);
+            if (writeTimeoutMillis != null) {
+                builder.writeTimeout(writeTimeoutMillis, TimeUnit.MILLISECONDS);
             }
 
             builder.addInterceptor(new TimeoutInterceptor(clientConfig.getCacheConfig()));
@@ -818,66 +816,5 @@ public class Consul {
                     .build();
         }
 
-    }
-
-    public static class NetworkTimeoutConfig {
-        private final IntSupplier readTimeoutMillisSupplier;
-        private final IntSupplier writeTimeoutMillisSupplier;
-        private final IntSupplier connectTimeoutMillisSupplier;
-
-        private NetworkTimeoutConfig(
-                IntSupplier readTimeoutMillisSupplier,
-                IntSupplier writeTimeoutMillisSupplier,
-                IntSupplier connectTimeoutMillisSupplier) {
-            this.readTimeoutMillisSupplier = readTimeoutMillisSupplier;
-            this.writeTimeoutMillisSupplier = writeTimeoutMillisSupplier;
-            this.connectTimeoutMillisSupplier = connectTimeoutMillisSupplier;
-        }
-
-        public int getClientReadTimeoutMillis() {
-            return readTimeoutMillisSupplier.getAsInt();
-        }
-        public int getClientWriteTimeoutMillis() {
-            return writeTimeoutMillisSupplier.getAsInt();
-        }
-        public int getClientConnectTimeoutMillis() {
-            return connectTimeoutMillisSupplier.getAsInt();
-        }
-        public static class Builder {
-            private IntSupplier readTimeoutMillisSupplier = () -> -1;
-            private IntSupplier writeTimeoutMillisSupplier = () -> -1;
-            private IntSupplier connectTimeoutMillisSupplier = () -> -1;
-
-            public NetworkTimeoutConfig.Builder withReadTimeout(IntSupplier timeoutSupplier) {
-                this.readTimeoutMillisSupplier = timeoutSupplier;
-                return this;
-            }
-
-            public NetworkTimeoutConfig.Builder withReadTimeout(int millis) {
-                return withReadTimeout(() -> millis);
-            }
-
-            public NetworkTimeoutConfig.Builder withWriteTimeout(IntSupplier timeoutSupplier) {
-                this.writeTimeoutMillisSupplier = timeoutSupplier;
-                return this;
-            }
-
-            public NetworkTimeoutConfig.Builder withWriteTimeout(int millis) {
-                return withWriteTimeout(() -> millis);
-            }
-
-            public NetworkTimeoutConfig.Builder withConnectTimeout(IntSupplier timeoutSupplier) {
-                this.connectTimeoutMillisSupplier = timeoutSupplier;
-                return this;
-            }
-
-            public NetworkTimeoutConfig.Builder withConnectTimeout(int millis) {
-                return withConnectTimeout(() -> millis);
-            }
-
-            public NetworkTimeoutConfig build() {
-                return new NetworkTimeoutConfig(readTimeoutMillisSupplier, writeTimeoutMillisSupplier, connectTimeoutMillisSupplier);
-            }
-        }
     }
 }

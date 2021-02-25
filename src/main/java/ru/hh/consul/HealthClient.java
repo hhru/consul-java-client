@@ -23,7 +23,7 @@ import ru.hh.consul.option.QueryOptions;
 /**
  * HTTP Client for /v1/health/ endpoints.
  */
-public class HealthClient extends BaseCacheableClient {
+public class HealthClient extends BaseClient {
 
     private static String CLIENT_NAME = "health";
 
@@ -34,8 +34,8 @@ public class HealthClient extends BaseCacheableClient {
      *
      * @param retrofit The {@link Retrofit} to build a client from.
      */
-    HealthClient(Retrofit retrofit, ClientConfig config, ClientEventCallback eventCallback, Consul.NetworkTimeoutConfig networkTimeoutConfig) {
-        super(CLIENT_NAME, config, eventCallback, networkTimeoutConfig);
+    HealthClient(Retrofit retrofit, ClientConfig config, ClientEventCallback eventCallback) {
+        super(CLIENT_NAME, config, eventCallback);
         this.api = retrofit.create(Api.class);
     }
 

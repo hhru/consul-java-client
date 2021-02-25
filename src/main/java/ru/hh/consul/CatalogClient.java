@@ -25,7 +25,7 @@ import ru.hh.consul.option.QueryOptions;
 /**
  * HTTP Client for /v1/catalog/ endpoints.
  */
-public class CatalogClient extends BaseCacheableClient {
+public class CatalogClient extends BaseClient {
 
     private static String CLIENT_NAME = "catalog";
 
@@ -36,8 +36,8 @@ public class CatalogClient extends BaseCacheableClient {
      *
      * @param retrofit The {@link Retrofit} to build a client from.
      */
-    CatalogClient(Retrofit retrofit, ClientConfig config, ClientEventCallback eventCallback, Consul.NetworkTimeoutConfig networkTimeoutConfig) {
-        super(CLIENT_NAME, config, eventCallback, networkTimeoutConfig);
+    CatalogClient(Retrofit retrofit, ClientConfig config, ClientEventCallback eventCallback) {
+        super(CLIENT_NAME, config, eventCallback);
         this.api = retrofit.create(Api.class);
     }
 
@@ -185,7 +185,6 @@ public class CatalogClient extends BaseCacheableClient {
      *
      * @param queryOptions The Query Options to use.
      * @param callback     Callback implemented by callee to handle results.
-     * @return A {@link ConsulResponse} containing
      * {@link CatalogService} objects.
      */
     public void getService(String service, QueryOptions queryOptions, ConsulResponseCallback<List<CatalogService>> callback) {
