@@ -1,5 +1,11 @@
 package ru.hh.consul;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import org.junit.Ignore;
+import org.junit.Test;
 import ru.hh.consul.cache.KVCache;
 import ru.hh.consul.cache.ServiceHealthCache;
 import ru.hh.consul.cache.ServiceHealthKey;
@@ -7,13 +13,6 @@ import ru.hh.consul.model.agent.ImmutableRegistration;
 import ru.hh.consul.model.agent.Registration;
 import ru.hh.consul.model.health.ServiceHealth;
 import ru.hh.consul.model.kv.Value;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 /**
  * Examples for "README.md" file.

@@ -1,16 +1,14 @@
 package ru.hh.consul.util.failover.strategy;
 
-import okhttp3.Request;
-import okhttp3.Response;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
-import ru.hh.consul.util.Address;
-
+import okhttp3.Request;
+import okhttp3.Response;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import ru.hh.consul.util.Address;
 
 public class BlacklistingConsulFailoverStrategyTest {
     private BlacklistingConsulFailoverStrategy blacklistingConsulFailoverStrategy;

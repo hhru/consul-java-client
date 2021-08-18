@@ -1,10 +1,9 @@
 package ru.hh.consul.util.bookend;
 
+import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import java.io.IOException;
 
 public class ConsulBookendInterceptor implements Interceptor {
 

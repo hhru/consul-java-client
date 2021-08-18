@@ -1,28 +1,19 @@
 package ru.hh.consul.util;
 
-import static org.mockito.ArgumentMatchers.nullable;
-import ru.hh.consul.ConsulException;
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.monitoring.ClientEventHandler;
-import okhttp3.Headers;
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.ResponseBody;
-import org.junit.Before;
-import org.junit.Test;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
-
+import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.Request;
+import okhttp3.ResponseBody;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
@@ -30,6 +21,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import ru.hh.consul.ConsulException;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.monitoring.ClientEventHandler;
 
 public class HttpTest {
 

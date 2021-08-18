@@ -1,15 +1,14 @@
 package ru.hh.consul;
 
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.config.ClientConfig;
-import org.junit.After;
-import org.junit.BeforeClass;
-import org.testcontainers.containers.GenericContainer;
-
 import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.testcontainers.containers.GenericContainer;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.util.Address;
 
 public abstract class BaseIntegrationTest {

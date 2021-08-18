@@ -1,18 +1,14 @@
 package ru.hh.consul.failover;
 
-import ru.hh.consul.BaseIntegrationTest;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+import junitparams.naming.TestCaseName;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
-
+import ru.hh.consul.BaseIntegrationTest;
 import ru.hh.consul.Consul;
 import ru.hh.consul.Consul.Builder;
-
-import junitparams.naming.TestCaseName;
 import ru.hh.consul.util.Address;
 
 public class FailoverTest extends BaseIntegrationTest {

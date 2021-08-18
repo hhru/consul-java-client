@@ -1,5 +1,11 @@
 package ru.hh.consul;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -13,13 +19,6 @@ import ru.hh.consul.model.query.QueryResults;
 import ru.hh.consul.model.query.StoredQuery;
 import ru.hh.consul.monitoring.ClientEventCallback;
 import ru.hh.consul.option.QueryOptions;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 public class PreparedQueryClient extends BaseClient {
 

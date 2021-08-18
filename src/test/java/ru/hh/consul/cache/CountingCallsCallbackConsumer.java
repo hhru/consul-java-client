@@ -1,12 +1,11 @@
 package ru.hh.consul.cache;
 
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.model.kv.Value;
-
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.model.kv.Value;
 
 /**
  *

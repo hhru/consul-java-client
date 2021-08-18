@@ -1,5 +1,12 @@
 package ru.hh.consul;
 
+import java.net.URL;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
@@ -9,18 +16,6 @@ import ru.hh.consul.async.ConsulResponseCallback;
 import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.model.ConsulResponse;
 import ru.hh.consul.model.State;
-import ru.hh.consul.model.health.HealthCheck;
-import ru.hh.consul.model.health.Service;
-import ru.hh.consul.monitoring.ClientEventCallback;
-import ru.hh.consul.option.QueryOptions;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-
-import java.net.URL;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import ru.hh.consul.model.agent.Agent;
 import ru.hh.consul.model.agent.Check;
 import ru.hh.consul.model.agent.FullService;
@@ -28,6 +23,10 @@ import ru.hh.consul.model.agent.ImmutableCheck;
 import ru.hh.consul.model.agent.ImmutableRegistration;
 import ru.hh.consul.model.agent.Member;
 import ru.hh.consul.model.agent.Registration;
+import ru.hh.consul.model.health.HealthCheck;
+import ru.hh.consul.model.health.Service;
+import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.option.QueryOptions;
 import ru.hh.consul.util.Address;
 
 /**

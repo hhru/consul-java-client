@@ -1,10 +1,8 @@
 package ru.hh.consul.util.failover.strategy;
 
 import java.util.Optional;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import okhttp3.Request;
 import okhttp3.Response;
 

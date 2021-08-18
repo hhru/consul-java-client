@@ -1,7 +1,7 @@
 package ru.hh.consul.util;
 
-import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 
 public class TrustManagerUtilsTest {
     @Test

@@ -3,11 +3,10 @@ package ru.hh.consul.util;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import java.io.IOException;
 import java.util.Base64;
 import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
-
-import java.io.IOException;
 
 /**
  * For use with JSON fields that Consul Base 64 encodes.

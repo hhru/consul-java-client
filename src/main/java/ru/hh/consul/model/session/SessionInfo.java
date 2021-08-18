@@ -4,12 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.util.List;
 import java.util.Optional;
+import org.immutables.value.Value;
 import ru.hh.consul.util.SecondsDeserializer;
 import ru.hh.consul.util.SecondsSerializer;
-import org.immutables.value.Value;
-
-import java.util.List;
 
 @Value.Immutable
 @Value.Style(jdkOnly = true)

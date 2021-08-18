@@ -1,12 +1,10 @@
 package ru.hh.consul.model.agent;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.hh.consul.util.Jackson;
-import org.junit.Test;
-
 import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import ru.hh.consul.util.Jackson;
 
 public class DebugConfigTest {
     private final String json = "{\n" +

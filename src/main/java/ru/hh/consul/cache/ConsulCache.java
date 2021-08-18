@@ -1,31 +1,19 @@
 package ru.hh.consul.cache;
 
-import java.util.HashMap;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import ru.hh.consul.ConsulException;
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.monitoring.ClientEventHandler;
-import ru.hh.consul.option.ImmutableQueryOptions;
-import ru.hh.consul.option.QueryOptions;
-import org.apache.commons.lang3.Validate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import static java.lang.String.format;
 import java.math.BigInteger;
 import java.time.Duration;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -33,11 +21,22 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
-import ru.hh.consul.util.Stopwatch;
-import ru.hh.consul.util.ThreadFactoryBuilder;
-import static java.lang.String.format;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.hh.consul.ConsulException;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.monitoring.ClientEventHandler;
+import ru.hh.consul.option.ImmutableQueryOptions;
+import ru.hh.consul.option.QueryOptions;
 import static ru.hh.consul.util.Checks.checkArgument;
 import static ru.hh.consul.util.Checks.checkState;
+import ru.hh.consul.util.Stopwatch;
+import ru.hh.consul.util.ThreadFactoryBuilder;
 
 /**
  * A cache structure that can provide an up-to-date read-only

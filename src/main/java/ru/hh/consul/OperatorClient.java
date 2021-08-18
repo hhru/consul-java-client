@@ -1,16 +1,15 @@
 package ru.hh.consul;
 
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.operator.RaftConfiguration;
-import ru.hh.consul.monitoring.ClientEventCallback;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
-
-import java.util.Map;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.operator.RaftConfiguration;
+import ru.hh.consul.monitoring.ClientEventCallback;
 
 public class OperatorClient extends BaseClient {
 

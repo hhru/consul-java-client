@@ -5,14 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
-import ru.hh.consul.model.catalog.ServiceWeights;
 import org.immutables.value.Value;
-
-import java.util.List;
+import ru.hh.consul.model.catalog.ServiceWeights;
 import static ru.hh.consul.util.Checks.checkState;
 
 @Value.Immutable

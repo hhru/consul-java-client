@@ -2,11 +2,10 @@ package ru.hh.consul.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import ru.hh.consul.model.event.Event;
-import org.immutables.value.Value;
-
 import java.math.BigInteger;
 import java.util.List;
+import org.immutables.value.Value;
+import ru.hh.consul.model.event.Event;
 
 @Value.Immutable
 @Value.Style(jdkOnly = true)

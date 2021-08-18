@@ -1,14 +1,12 @@
 package ru.hh.consul.util;
 
+import java.io.IOException;
 import java.util.Base64;
+import org.apache.commons.lang3.RandomStringUtils;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 import ru.hh.consul.model.event.Event;
 import ru.hh.consul.model.event.ImmutableEvent;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Test;
-
-import java.io.IOException;
-
-import static org.junit.Assert.assertEquals;
 
 public class Base64EncodingDeserializerTest {
 

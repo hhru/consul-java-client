@@ -1,10 +1,8 @@
 package ru.hh.consul.option;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
 import java.util.Optional;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class ConsistencyModeTest {
 

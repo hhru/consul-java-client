@@ -1,12 +1,11 @@
 package ru.hh.consul;
 
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.monitoring.ClientEventCallback;
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
-
-import java.util.List;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.monitoring.ClientEventCallback;
 
 public class StatusClient extends BaseClient {
 

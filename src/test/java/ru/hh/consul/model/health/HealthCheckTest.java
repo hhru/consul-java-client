@@ -1,10 +1,8 @@
 package ru.hh.consul.model.health;
 
-import org.junit.Test;
-
 import java.util.Collections;
-
 import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class HealthCheckTest {
 

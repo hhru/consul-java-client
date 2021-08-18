@@ -1,15 +1,13 @@
 package ru.hh.consul.option;
 
 
-import org.immutables.value.Value;
-
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+import org.immutables.value.Value;
 import static ru.hh.consul.option.Options.optionallyAdd;
 import static ru.hh.consul.util.Checks.checkArgument;
 

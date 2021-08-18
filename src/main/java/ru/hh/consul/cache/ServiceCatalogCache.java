@@ -1,11 +1,11 @@
 package ru.hh.consul.cache;
 
 import java.math.BigInteger;
+import java.util.concurrent.ScheduledExecutorService;
 import ru.hh.consul.CatalogClient;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.catalog.CatalogService;
 import ru.hh.consul.option.QueryOptions;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class ServiceCatalogCache extends ConsulCache<String, CatalogService> {
 

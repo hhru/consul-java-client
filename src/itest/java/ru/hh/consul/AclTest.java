@@ -1,15 +1,13 @@
 package ru.hh.consul;
 
+import java.time.Duration;
 import java.util.Objects;
 import java.util.UUID;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import java.time.Duration;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.testcontainers.containers.GenericContainer;
 import ru.hh.consul.model.acl.ImmutablePolicy;
 import ru.hh.consul.model.acl.ImmutablePolicyLink;

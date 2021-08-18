@@ -1,5 +1,6 @@
 package ru.hh.consul;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URL;
@@ -10,22 +11,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
-import ru.hh.consul.cache.TimeoutInterceptor;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.monitoring.ClientEventCallback;
-import ru.hh.consul.util.Address;
-import ru.hh.consul.util.Jackson;
-import ru.hh.consul.util.TrustManagerUtils;
-import ru.hh.consul.util.bookend.ConsulBookend;
-import ru.hh.consul.util.bookend.ConsulBookendInterceptor;
-import ru.hh.consul.util.failover.ConsulFailoverInterceptor;
-import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;
-
 import okhttp3.ConnectionPool;
 import okhttp3.Dispatcher;
 import okhttp3.HttpUrl;
@@ -35,7 +23,17 @@ import okhttp3.Request;
 import okhttp3.internal.Util;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import ru.hh.consul.cache.TimeoutInterceptor;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.util.Address;
 import static ru.hh.consul.util.Checks.checkArgument;
+import ru.hh.consul.util.Jackson;
+import ru.hh.consul.util.TrustManagerUtils;
+import ru.hh.consul.util.bookend.ConsulBookend;
+import ru.hh.consul.util.bookend.ConsulBookendInterceptor;
+import ru.hh.consul.util.failover.ConsulFailoverInterceptor;
+import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;
 
 /**
 * Client for interacting with the Consul HTTP API.

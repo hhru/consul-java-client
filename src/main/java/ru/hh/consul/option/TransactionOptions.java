@@ -1,11 +1,9 @@
 package ru.hh.consul.option;
 
-import java.util.Optional;
-import org.immutables.value.Value;
-
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Optional;
+import org.immutables.value.Value;
 import static ru.hh.consul.option.Options.optionallyAdd;
 
 /**

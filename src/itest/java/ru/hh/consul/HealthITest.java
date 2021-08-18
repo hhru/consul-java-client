@@ -1,5 +1,16 @@
 package ru.hh.consul;
 
+import java.math.BigInteger;
+import java.net.UnknownHostException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
+import org.junit.Test;
+import static ru.hh.consul.Consul.builder;
 import ru.hh.consul.model.ConsulResponse;
 import ru.hh.consul.model.State;
 import ru.hh.consul.model.agent.ImmutableRegistration;
@@ -8,20 +19,7 @@ import ru.hh.consul.model.health.HealthCheck;
 import ru.hh.consul.model.health.ServiceHealth;
 import ru.hh.consul.option.ImmutableQueryOptions;
 import ru.hh.consul.option.QueryOptions;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import java.math.BigInteger;
-import java.net.UnknownHostException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import ru.hh.consul.util.Address;
-
-import static ru.hh.consul.Consul.builder;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class HealthITest extends BaseIntegrationTest {
 

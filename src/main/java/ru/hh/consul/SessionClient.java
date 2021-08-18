@@ -1,5 +1,10 @@
 package ru.hh.consul;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
@@ -10,12 +15,6 @@ import ru.hh.consul.model.session.Session;
 import ru.hh.consul.model.session.SessionCreatedResponse;
 import ru.hh.consul.model.session.SessionInfo;
 import ru.hh.consul.monitoring.ClientEventCallback;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 /**
  * HTTP Client for /v1/session/ endpoints.

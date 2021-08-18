@@ -1,17 +1,34 @@
 package ru.hh.consul;
 
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.InetSocketAddress;
-import java.nio.charset.Charset;
-import java.util.Optional;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.sun.net.httpserver.HttpServer;
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.fail;
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.nio.charset.Charset;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.RandomStringUtils;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import org.junit.Ignore;
+import org.junit.Test;
 import ru.hh.consul.async.ConsulResponseCallback;
 import ru.hh.consul.model.ConsulResponse;
 import ru.hh.consul.model.kv.ImmutableOperation;
@@ -26,27 +43,7 @@ import ru.hh.consul.option.ImmutableDeleteOptions;
 import ru.hh.consul.option.ImmutableQueryOptions;
 import ru.hh.consul.option.PutOptions;
 import ru.hh.consul.option.QueryOptions;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import java.net.UnknownHostException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import ru.hh.consul.util.Address;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class KeyValueITest extends BaseIntegrationTest {
     private static final Charset TEST_CHARSET = Charset.forName("IBM297");

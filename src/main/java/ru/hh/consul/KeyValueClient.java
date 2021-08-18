@@ -1,10 +1,26 @@
 package ru.hh.consul;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import org.apache.commons.lang3.StringUtils;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 import ru.hh.consul.async.ConsulResponseCallback;
 import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.model.ConsulResponse;
@@ -20,29 +36,9 @@ import ru.hh.consul.option.ImmutableTransactionOptions;
 import ru.hh.consul.option.PutOptions;
 import ru.hh.consul.option.QueryOptions;
 import ru.hh.consul.option.TransactionOptions;
-import ru.hh.consul.util.Jackson;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import org.apache.commons.lang3.StringUtils;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import ru.hh.consul.util.Strings;
 import static ru.hh.consul.util.Checks.checkArgument;
+import ru.hh.consul.util.Jackson;
+import ru.hh.consul.util.Strings;
 
 /**
  * HTTP Client for /v1/kv/ endpoints.

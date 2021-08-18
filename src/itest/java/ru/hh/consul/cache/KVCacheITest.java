@@ -1,5 +1,6 @@
 package ru.hh.consul.cache;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,30 +10,27 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import ru.hh.consul.BaseIntegrationTest;
-import ru.hh.consul.Consul;
-import ru.hh.consul.KeyValueClient;
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.kv.Value;
-import ru.hh.consul.Synchroniser;
+import java.util.concurrent.atomic.AtomicBoolean;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicBoolean;
-import ru.hh.consul.util.ThreadFactoryBuilder;
-
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import ru.hh.consul.BaseIntegrationTest;
+import ru.hh.consul.Consul;
+import ru.hh.consul.KeyValueClient;
+import ru.hh.consul.Synchroniser;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.kv.Value;
+import ru.hh.consul.util.ThreadFactoryBuilder;
 
 @RunWith(JUnitParamsRunner.class)
 public class KVCacheITest extends BaseIntegrationTest {

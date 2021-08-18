@@ -1,13 +1,12 @@
 package ru.hh.consul.cache;
 
 import java.math.BigInteger;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.function.Function;
 import ru.hh.consul.HealthClient;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.health.HealthCheck;
 import ru.hh.consul.option.QueryOptions;
-
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.function.Function;
 
 public class HealthCheckCache extends ConsulCache<String, HealthCheck> {
 

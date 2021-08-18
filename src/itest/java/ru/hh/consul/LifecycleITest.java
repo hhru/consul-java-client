@@ -1,19 +1,18 @@
 package ru.hh.consul;
 
-import okhttp3.internal.Util;
-import okhttp3.ConnectionPool;
-import org.junit.Test;
-import org.mockito.stubbing.Answer;
-
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import okhttp3.ConnectionPool;
+import okhttp3.internal.Util;
+import org.junit.Test;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import org.mockito.stubbing.Answer;
 
 
 public class LifecycleITest extends BaseIntegrationTest {

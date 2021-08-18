@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Optional;
-import ru.hh.consul.util.Base64EncodingDeserializer;
 import org.immutables.value.Value;
+import ru.hh.consul.util.Base64EncodingDeserializer;
 
 @Value.Immutable
 @Value.Style(jdkOnly = true)

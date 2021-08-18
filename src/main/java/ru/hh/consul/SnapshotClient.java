@@ -1,5 +1,17 @@
 package ru.hh.consul;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.Map;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -12,19 +24,6 @@ import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.model.ConsulResponse;
 import ru.hh.consul.monitoring.ClientEventCallback;
 import ru.hh.consul.option.QueryOptions;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.Map;
 
 /**
  * HTTP Client for /v1/snapshot/ endpoints.

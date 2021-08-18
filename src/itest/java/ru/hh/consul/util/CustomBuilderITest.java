@@ -1,14 +1,12 @@
 package ru.hh.consul.util;
 
+import java.net.Proxy;
+import java.net.UnknownHostException;
+import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 import ru.hh.consul.BaseIntegrationTest;
 import ru.hh.consul.Consul;
 import ru.hh.consul.model.agent.Agent;
-import org.junit.Test;
-
-import java.net.Proxy;
-import java.net.UnknownHostException;
-
-import static org.junit.Assert.assertNotNull;
 
 public class CustomBuilderITest extends BaseIntegrationTest{
 

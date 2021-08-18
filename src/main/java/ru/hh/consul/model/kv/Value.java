@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.util.Base64;
-import ru.hh.consul.util.UnsignedLongDeserializer;
-
 import java.nio.charset.Charset;
+import java.util.Base64;
 import java.util.Optional;
+import ru.hh.consul.util.UnsignedLongDeserializer;
 
 @org.immutables.value.Value.Immutable
 @org.immutables.value.Value.Style(jdkOnly = true)

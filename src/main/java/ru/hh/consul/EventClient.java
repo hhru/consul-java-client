@@ -1,5 +1,12 @@
 package ru.hh.consul;
 
+import java.util.List;
+import java.util.Map;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import org.apache.commons.lang3.StringUtils;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
@@ -15,14 +22,6 @@ import ru.hh.consul.model.event.Event;
 import ru.hh.consul.monitoring.ClientEventCallback;
 import ru.hh.consul.option.EventOptions;
 import ru.hh.consul.option.QueryOptions;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import org.apache.commons.lang3.StringUtils;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * HTTP Client for /v1/event/ endpoints.

@@ -1,9 +1,8 @@
 package ru.hh.consul.option;
 
-import java.util.Optional;
-
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Options {
     private Options(){}

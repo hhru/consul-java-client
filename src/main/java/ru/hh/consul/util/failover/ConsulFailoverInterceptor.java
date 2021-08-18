@@ -1,16 +1,14 @@
 package ru.hh.consul.util.failover;
 
 import java.io.IOException;
-
 import java.util.Collection;
 import java.util.Optional;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import ru.hh.consul.ConsulException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.hh.consul.ConsulException;
 import ru.hh.consul.util.Address;
 import ru.hh.consul.util.failover.strategy.BlacklistingConsulFailoverStrategy;
 import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;

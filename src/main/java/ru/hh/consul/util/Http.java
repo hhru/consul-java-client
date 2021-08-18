@@ -1,19 +1,18 @@
 package ru.hh.consul.util;
 
+import java.io.IOException;
+import java.math.BigInteger;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import okhttp3.Headers;
+import org.apache.commons.lang3.math.NumberUtils;
+import retrofit2.Call;
+import retrofit2.Response;
 import ru.hh.consul.ConsulException;
 import ru.hh.consul.async.Callback;
 import ru.hh.consul.async.ConsulResponseCallback;
 import ru.hh.consul.model.ConsulResponse;
 import ru.hh.consul.monitoring.ClientEventHandler;
-import okhttp3.Headers;
-import org.apache.commons.lang3.math.NumberUtils;
-import retrofit2.Call;
-import retrofit2.Response;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class Http {
 

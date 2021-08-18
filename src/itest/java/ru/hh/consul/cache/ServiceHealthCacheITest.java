@@ -1,23 +1,22 @@
 package ru.hh.consul.cache;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import ru.hh.consul.BaseIntegrationTest;
-import ru.hh.consul.HealthClient;
-import ru.hh.consul.model.health.ServiceHealth;
-import ru.hh.consul.Synchroniser;
-import org.junit.Test;
-
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import org.junit.Test;
+import ru.hh.consul.BaseIntegrationTest;
+import ru.hh.consul.HealthClient;
+import ru.hh.consul.Synchroniser;
+import ru.hh.consul.model.health.ServiceHealth;
 
 public class ServiceHealthCacheITest extends BaseIntegrationTest {
 

@@ -1,9 +1,8 @@
 package ru.hh.consul.config;
 
+import java.time.Duration;
 import java.util.Objects;
 import org.slf4j.Logger;
-
-import java.time.Duration;
 import static ru.hh.consul.util.Checks.checkArgument;
 
 public class CacheConfig {

@@ -1,8 +1,8 @@
 package ru.hh.consul.cache;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import ru.hh.consul.model.health.ServiceHealth;
 import org.immutables.value.Value;
+import ru.hh.consul.model.health.ServiceHealth;
 
 /**
  * Provides a unique key for a {@link ServiceHealth} entry in a {@link ServiceHealthCache}

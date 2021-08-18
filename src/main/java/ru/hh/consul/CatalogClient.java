@@ -1,5 +1,9 @@
 package ru.hh.consul;
 
+import java.util.List;
+import java.util.Map;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
@@ -17,11 +21,6 @@ import ru.hh.consul.model.catalog.CatalogService;
 import ru.hh.consul.model.health.Node;
 import ru.hh.consul.monitoring.ClientEventCallback;
 import ru.hh.consul.option.QueryOptions;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * HTTP Client for /v1/catalog/ endpoints.

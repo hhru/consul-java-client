@@ -1,14 +1,10 @@
 package ru.hh.consul.cache;
 
+import java.time.Duration;
 import java.util.Optional;
-import ru.hh.consul.KeyValueClient;
-import ru.hh.consul.KeyValueClientFactory;
-import ru.hh.consul.MockApiService;
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.kv.ImmutableValue;
-import ru.hh.consul.model.kv.Value;
-import ru.hh.consul.monitoring.ClientEventCallback;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
@@ -20,11 +16,14 @@ import retrofit2.Retrofit;
 import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.MockRetrofit;
 import retrofit2.mock.NetworkBehavior;
-
-import java.time.Duration;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
+import ru.hh.consul.KeyValueClient;
+import ru.hh.consul.KeyValueClientFactory;
+import ru.hh.consul.MockApiService;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.kv.ImmutableValue;
+import ru.hh.consul.model.kv.Value;
+import ru.hh.consul.monitoring.ClientEventCallback;
 import ru.hh.consul.util.ThreadFactoryBuilder;
 
 @RunWith(JUnitParamsRunner.class)

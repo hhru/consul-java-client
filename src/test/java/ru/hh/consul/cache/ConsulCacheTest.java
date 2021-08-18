@@ -1,7 +1,26 @@
 package ru.hh.consul.cache;
 
+import java.math.BigInteger;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+import junitparams.naming.TestCaseName;
+import org.apache.commons.lang3.time.StopWatch;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.hamcrest.Matchers;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import static org.mockito.Mockito.mock;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.ConsulResponse;
 import ru.hh.consul.model.kv.ImmutableValue;
@@ -10,27 +29,6 @@ import ru.hh.consul.monitoring.ClientEventHandler;
 import ru.hh.consul.option.ConsistencyMode;
 import ru.hh.consul.option.ImmutableQueryOptions;
 import ru.hh.consul.option.QueryOptions;
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import junitparams.naming.TestCaseName;
-import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import java.math.BigInteger;
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-
-import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 
 @RunWith(JUnitParamsRunner.class)
 public class ConsulCacheTest {
