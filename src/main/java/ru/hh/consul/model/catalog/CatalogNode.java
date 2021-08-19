@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import ru.hh.consul.model.health.Node;
-import ru.hh.consul.model.health.Service;
 import java.util.Map;
 import org.immutables.value.Value;
+import ru.hh.consul.model.health.Node;
+import ru.hh.consul.model.health.Service;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutableCatalogNode.class)

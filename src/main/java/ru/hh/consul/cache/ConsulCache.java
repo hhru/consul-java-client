@@ -6,13 +6,6 @@ import static com.google.common.base.Preconditions.checkState;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import ru.hh.consul.ConsulException;
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.monitoring.ClientEventHandler;
-import ru.hh.consul.option.ImmutableQueryOptions;
-import ru.hh.consul.option.QueryOptions;
 import java.math.BigInteger;
 import java.time.Duration;
 import java.util.Collections;
@@ -35,6 +28,13 @@ import java.util.function.Function;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.hh.consul.ConsulException;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.monitoring.ClientEventHandler;
+import ru.hh.consul.option.ImmutableQueryOptions;
+import ru.hh.consul.option.QueryOptions;
 
 /**
  * A cache structure that can provide an up-to-date read-only

@@ -1,14 +1,6 @@
 package ru.hh.consul.cache;
 
 import com.google.common.collect.ImmutableMap;
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.model.kv.ImmutableValue;
-import ru.hh.consul.model.kv.Value;
-import ru.hh.consul.monitoring.ClientEventHandler;
-import ru.hh.consul.option.ConsistencyMode;
-import ru.hh.consul.option.ImmutableQueryOptions;
-import ru.hh.consul.option.QueryOptions;
 import java.math.BigInteger;
 import java.time.Duration;
 import java.util.Arrays;
@@ -31,6 +23,14 @@ import org.junit.runner.RunWith;
 import static org.mockito.Mockito.mock;
 import org.mockito.internal.matchers.GreaterOrEqual;
 import org.mockito.internal.matchers.LessOrEqual;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.model.kv.ImmutableValue;
+import ru.hh.consul.model.kv.Value;
+import ru.hh.consul.monitoring.ClientEventHandler;
+import ru.hh.consul.option.ConsistencyMode;
+import ru.hh.consul.option.ImmutableQueryOptions;
+import ru.hh.consul.option.QueryOptions;
 
 @RunWith(JUnitParamsRunner.class)
 public class ConsulCacheTest {

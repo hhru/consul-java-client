@@ -1,16 +1,16 @@
 package ru.hh.consul.cache;
 
-import ru.hh.consul.BaseIntegrationTest;
-import ru.hh.consul.HealthClient;
-import ru.hh.consul.Synchroniser;
-import ru.hh.consul.model.State;
-import ru.hh.consul.model.health.HealthCheck;
 import java.time.Duration;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.Test;
+import ru.hh.consul.BaseIntegrationTest;
+import ru.hh.consul.HealthClient;
+import ru.hh.consul.Synchroniser;
+import ru.hh.consul.model.State;
+import ru.hh.consul.model.health.HealthCheck;
 
 public class HealthCheckCacheITest extends BaseIntegrationTest {
 

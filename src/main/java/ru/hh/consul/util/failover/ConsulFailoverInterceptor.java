@@ -1,9 +1,6 @@
 package ru.hh.consul.util.failover;
 
 import com.google.common.net.HostAndPort;
-import ru.hh.consul.ConsulException;
-import ru.hh.consul.util.failover.strategy.BlacklistingConsulFailoverStrategy;
-import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;
@@ -12,6 +9,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.hh.consul.ConsulException;
+import ru.hh.consul.util.failover.strategy.BlacklistingConsulFailoverStrategy;
+import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;
 
 public class ConsulFailoverInterceptor implements Interceptor {
 	private final static Logger LOGGER = LoggerFactory.getLogger(ConsulFailoverInterceptor.class);

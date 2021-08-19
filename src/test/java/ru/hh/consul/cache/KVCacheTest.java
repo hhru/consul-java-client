@@ -1,15 +1,6 @@
 package ru.hh.consul.cache;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import ru.hh.consul.Consul;
-import ru.hh.consul.KeyValueClient;
-import ru.hh.consul.KeyValueClientFactory;
-import ru.hh.consul.MockApiService;
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.kv.ImmutableValue;
-import ru.hh.consul.model.kv.Value;
-import ru.hh.consul.monitoring.ClientEventCallback;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.concurrent.Executors;
@@ -26,6 +17,15 @@ import retrofit2.Retrofit;
 import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.MockRetrofit;
 import retrofit2.mock.NetworkBehavior;
+import ru.hh.consul.Consul;
+import ru.hh.consul.KeyValueClient;
+import ru.hh.consul.KeyValueClientFactory;
+import ru.hh.consul.MockApiService;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.kv.ImmutableValue;
+import ru.hh.consul.model.kv.Value;
+import ru.hh.consul.monitoring.ClientEventCallback;
 
 @RunWith(JUnitParamsRunner.class)
 public class KVCacheTest {

@@ -3,9 +3,9 @@ package ru.hh.consul.model.event;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import ru.hh.consul.util.Base64EncodingDeserializer;
 import java.util.Optional;
 import org.immutables.value.Value;
+import ru.hh.consul.util.Base64EncodingDeserializer;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutableEvent.class)

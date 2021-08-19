@@ -1,15 +1,5 @@
 package ru.hh.consul;
 
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.model.catalog.CatalogDeregistration;
-import ru.hh.consul.model.catalog.CatalogNode;
-import ru.hh.consul.model.catalog.CatalogRegistration;
-import ru.hh.consul.model.catalog.CatalogService;
-import ru.hh.consul.model.health.Node;
-import ru.hh.consul.monitoring.ClientEventCallback;
-import ru.hh.consul.option.QueryOptions;
 import java.util.List;
 import java.util.Map;
 import retrofit2.Call;
@@ -21,6 +11,16 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.model.catalog.CatalogDeregistration;
+import ru.hh.consul.model.catalog.CatalogNode;
+import ru.hh.consul.model.catalog.CatalogRegistration;
+import ru.hh.consul.model.catalog.CatalogService;
+import ru.hh.consul.model.health.Node;
+import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.option.QueryOptions;
 
 /**
  * HTTP Client for /v1/catalog/ endpoints.

@@ -1,10 +1,6 @@
 package ru.hh.consul.cache;
 
 import com.google.common.collect.ImmutableMap;
-import ru.hh.consul.BaseIntegrationTest;
-import ru.hh.consul.HealthClient;
-import ru.hh.consul.Synchroniser;
-import ru.hh.consul.model.health.ServiceHealth;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +14,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import org.junit.Test;
+import ru.hh.consul.BaseIntegrationTest;
+import ru.hh.consul.HealthClient;
+import ru.hh.consul.Synchroniser;
+import ru.hh.consul.model.health.ServiceHealth;
 
 public class ServiceHealthCacheITest extends BaseIntegrationTest {
 

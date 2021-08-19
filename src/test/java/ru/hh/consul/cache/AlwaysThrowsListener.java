@@ -1,7 +1,7 @@
 package ru.hh.consul.cache;
 
-import ru.hh.consul.model.kv.Value;
 import java.util.Map;
+import ru.hh.consul.model.kv.Value;
 
 /**
  *

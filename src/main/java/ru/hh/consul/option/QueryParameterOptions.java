@@ -1,6 +1,5 @@
 package ru.hh.consul.option;
 
-import static ru.hh.consul.option.Options.optionallyAdd;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;

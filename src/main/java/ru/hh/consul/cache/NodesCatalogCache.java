@@ -1,11 +1,11 @@
 package ru.hh.consul.cache;
 
 import com.google.common.primitives.Ints;
+import java.util.concurrent.ScheduledExecutorService;
 import ru.hh.consul.CatalogClient;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.health.Node;
 import ru.hh.consul.option.QueryOptions;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class NodesCatalogCache extends ConsulCache<String, Node> {
 

@@ -1,21 +1,6 @@
 package ru.hh.consul;
 
 import com.google.common.collect.ImmutableList;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.model.agent.Agent;
-import ru.hh.consul.model.agent.FullService;
-import ru.hh.consul.model.agent.ImmutableFullService;
-import ru.hh.consul.model.agent.ImmutableRegCheck;
-import ru.hh.consul.model.agent.ImmutableRegistration;
-import ru.hh.consul.model.agent.Registration;
-import ru.hh.consul.model.catalog.ImmutableServiceWeights;
-import ru.hh.consul.model.health.HealthCheck;
-import ru.hh.consul.model.health.ImmutableService;
-import ru.hh.consul.model.health.Service;
-import ru.hh.consul.model.health.ServiceHealth;
-import ru.hh.consul.option.ImmutableQueryOptions;
-import ru.hh.consul.option.ImmutableQueryParameterOptions;
-import ru.hh.consul.option.QueryOptions;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -33,6 +18,21 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.model.agent.Agent;
+import ru.hh.consul.model.agent.FullService;
+import ru.hh.consul.model.agent.ImmutableFullService;
+import ru.hh.consul.model.agent.ImmutableRegCheck;
+import ru.hh.consul.model.agent.ImmutableRegistration;
+import ru.hh.consul.model.agent.Registration;
+import ru.hh.consul.model.catalog.ImmutableServiceWeights;
+import ru.hh.consul.model.health.HealthCheck;
+import ru.hh.consul.model.health.ImmutableService;
+import ru.hh.consul.model.health.Service;
+import ru.hh.consul.model.health.ServiceHealth;
+import ru.hh.consul.option.ImmutableQueryOptions;
+import ru.hh.consul.option.ImmutableQueryParameterOptions;
+import ru.hh.consul.option.QueryOptions;
 
 public class AgentITest extends BaseIntegrationTest {
 

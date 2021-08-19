@@ -1,11 +1,5 @@
 package ru.hh.consul;
 
-import ru.hh.consul.async.Callback;
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.monitoring.ClientEventCallback;
-import ru.hh.consul.option.QueryOptions;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,6 +18,12 @@ import retrofit2.http.Headers;
 import retrofit2.http.PUT;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
+import ru.hh.consul.async.Callback;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.option.QueryOptions;
 
 /**
  * HTTP Client for /v1/snapshot/ endpoints.

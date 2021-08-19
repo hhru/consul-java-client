@@ -1,7 +1,6 @@
 package ru.hh.consul.cache;
 
 import com.google.common.base.Strings;
-import ru.hh.consul.config.CacheConfig;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +9,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.hh.consul.config.CacheConfig;
 
 public class TimeoutInterceptor implements Interceptor {
 

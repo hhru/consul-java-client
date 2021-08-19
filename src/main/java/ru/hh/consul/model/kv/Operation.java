@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import ru.hh.consul.util.Base64EncodingDeserializer;
-import ru.hh.consul.util.Base64EncodingSerializer;
 import java.math.BigInteger;
 import java.util.Optional;
 import org.immutables.value.Value;
+import ru.hh.consul.util.Base64EncodingDeserializer;
+import ru.hh.consul.util.Base64EncodingSerializer;
 
 @Value.Immutable
 @JsonDeserialize(as = ImmutableOperation.class)

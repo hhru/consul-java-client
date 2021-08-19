@@ -2,12 +2,12 @@ package ru.hh.consul.cache;
 
 import com.google.common.net.HostAndPort;
 import com.google.common.primitives.Ints;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.function.Function;
 import ru.hh.consul.HealthClient;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.health.ServiceHealth;
 import ru.hh.consul.option.QueryOptions;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.function.Function;
 
 public class ServiceHealthCache extends ConsulCache<ServiceHealthKey, ServiceHealth> {
 

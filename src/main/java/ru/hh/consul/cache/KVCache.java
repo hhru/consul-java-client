@@ -3,12 +3,12 @@ package ru.hh.consul.cache;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.primitives.Ints;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.function.Function;
 import ru.hh.consul.KeyValueClient;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.kv.Value;
 import ru.hh.consul.option.QueryOptions;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.function.Function;
 
 public class KVCache extends ConsulCache<String, Value> {
 

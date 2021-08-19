@@ -2,13 +2,6 @@ package ru.hh.consul.cache;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import ru.hh.consul.BaseIntegrationTest;
-import ru.hh.consul.Consul;
-import ru.hh.consul.KeyValueClient;
-import ru.hh.consul.Synchroniser;
-import ru.hh.consul.config.CacheConfig;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.kv.Value;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +25,13 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.hh.consul.BaseIntegrationTest;
+import ru.hh.consul.Consul;
+import ru.hh.consul.KeyValueClient;
+import ru.hh.consul.Synchroniser;
+import ru.hh.consul.config.CacheConfig;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.kv.Value;
 
 @RunWith(JUnitParamsRunner.class)
 public class KVCacheITest extends BaseIntegrationTest {

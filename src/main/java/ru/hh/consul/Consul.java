@@ -5,15 +5,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.io.BaseEncoding;
 import com.google.common.net.HostAndPort;
-import ru.hh.consul.cache.TimeoutInterceptor;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.monitoring.ClientEventCallback;
-import ru.hh.consul.util.Jackson;
-import ru.hh.consul.util.TrustManagerUtils;
-import ru.hh.consul.util.bookend.ConsulBookend;
-import ru.hh.consul.util.bookend.ConsulBookendInterceptor;
-import ru.hh.consul.util.failover.ConsulFailoverInterceptor;
-import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;
 import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URL;
@@ -36,6 +27,15 @@ import okhttp3.Request;
 import okhttp3.internal.Util;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import ru.hh.consul.cache.TimeoutInterceptor;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.util.Jackson;
+import ru.hh.consul.util.TrustManagerUtils;
+import ru.hh.consul.util.bookend.ConsulBookend;
+import ru.hh.consul.util.bookend.ConsulBookendInterceptor;
+import ru.hh.consul.util.failover.ConsulFailoverInterceptor;
+import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;
 
 /**
 * Client for interacting with the Consul HTTP API.

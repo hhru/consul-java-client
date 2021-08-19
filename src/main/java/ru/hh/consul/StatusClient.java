@@ -1,14 +1,14 @@
 package ru.hh.consul;
 
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.monitoring.ClientEventCallback;
-import ru.hh.consul.option.QueryOptions;
 import java.util.List;
 import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.option.QueryOptions;
 
 public class StatusClient extends BaseClient {
 

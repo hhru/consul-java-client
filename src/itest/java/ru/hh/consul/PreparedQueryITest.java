@@ -1,15 +1,15 @@
 package ru.hh.consul;
 
 import com.google.common.net.HostAndPort;
-import ru.hh.consul.model.query.ImmutablePreparedQuery;
-import ru.hh.consul.model.query.ImmutableServiceQuery;
-import ru.hh.consul.model.query.PreparedQuery;
-import ru.hh.consul.model.query.StoredQuery;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.hh.consul.model.query.ImmutablePreparedQuery;
+import ru.hh.consul.model.query.ImmutableServiceQuery;
+import ru.hh.consul.model.query.PreparedQuery;
+import ru.hh.consul.model.query.StoredQuery;
 
 public class PreparedQueryITest extends BaseIntegrationTest {
 

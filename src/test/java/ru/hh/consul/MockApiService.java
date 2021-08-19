@@ -1,7 +1,5 @@
 package ru.hh.consul;
 
-import ru.hh.consul.model.kv.TxResponse;
-import ru.hh.consul.model.kv.Value;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +9,8 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.Calls;
+import ru.hh.consul.model.kv.TxResponse;
+import ru.hh.consul.model.kv.Value;
 
 /**
  *

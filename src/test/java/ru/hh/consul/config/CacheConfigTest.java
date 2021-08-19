@@ -1,9 +1,5 @@
 package ru.hh.consul.config;
 
-import ru.hh.consul.cache.CacheDescriptor;
-import ru.hh.consul.cache.ConsulCache;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.monitoring.ClientEventHandler;
 import java.math.BigInteger;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -25,6 +21,10 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import org.slf4j.Logger;
+import ru.hh.consul.cache.CacheDescriptor;
+import ru.hh.consul.cache.ConsulCache;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.monitoring.ClientEventHandler;
 
 @RunWith(JUnitParamsRunner.class)
 public class CacheConfigTest {

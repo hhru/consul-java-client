@@ -1,12 +1,12 @@
 package ru.hh.consul.util;
 
 import com.google.common.io.BaseEncoding;
-import ru.hh.consul.model.event.Event;
-import ru.hh.consul.model.event.ImmutableEvent;
 import java.io.IOException;
 import org.apache.commons.lang3.RandomStringUtils;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import ru.hh.consul.model.event.Event;
+import ru.hh.consul.model.event.ImmutableEvent;
 
 public class Base64EncodingDeserializerTest {
 

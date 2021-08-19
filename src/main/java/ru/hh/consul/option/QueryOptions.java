@@ -2,7 +2,6 @@ package ru.hh.consul.option;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import com.google.common.collect.ImmutableList;
-import static ru.hh.consul.option.Options.optionallyAdd;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;

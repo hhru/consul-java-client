@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.io.BaseEncoding;
-import ru.hh.consul.util.UnsignedLongDeserializer;
 import java.nio.charset.Charset;
 import java.util.Optional;
+import ru.hh.consul.util.UnsignedLongDeserializer;
 
 @org.immutables.value.Value.Immutable
 @JsonDeserialize(as = ImmutableValue.class)

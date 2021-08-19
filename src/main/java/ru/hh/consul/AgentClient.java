@@ -1,6 +1,19 @@
 package ru.hh.consul;
 
 import com.google.common.net.HostAndPort;
+import java.net.URL;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
+import retrofit2.http.QueryName;
 import ru.hh.consul.async.ConsulResponseCallback;
 import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.model.ConsulResponse;
@@ -18,19 +31,6 @@ import ru.hh.consul.monitoring.ClientEventCallback;
 import ru.hh.consul.option.ImmutableQueryOptions;
 import ru.hh.consul.option.QueryOptions;
 import ru.hh.consul.option.QueryParameterOptions;
-import java.net.URL;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
-import retrofit2.http.QueryName;
 
 /**
  * HTTP Client for /v1/agent/ endpoints.

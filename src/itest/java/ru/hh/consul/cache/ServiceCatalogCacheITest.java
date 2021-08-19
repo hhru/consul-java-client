@@ -1,9 +1,6 @@
 package ru.hh.consul.cache;
 
 import com.google.common.util.concurrent.Uninterruptibles;
-import ru.hh.consul.BaseIntegrationTest;
-import ru.hh.consul.Synchroniser;
-import ru.hh.consul.model.catalog.CatalogService;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
@@ -16,6 +13,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import ru.hh.consul.BaseIntegrationTest;
+import ru.hh.consul.Synchroniser;
+import ru.hh.consul.model.catalog.CatalogService;
 
 public class ServiceCatalogCacheITest extends BaseIntegrationTest {
 

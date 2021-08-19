@@ -2,17 +2,17 @@ package ru.hh.consul.util;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Sets;
-import ru.hh.consul.ConsulException;
-import ru.hh.consul.async.Callback;
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.monitoring.ClientEventHandler;
 import java.io.IOException;
 import java.math.BigInteger;
 import okhttp3.Headers;
 import org.apache.commons.lang3.math.NumberUtils;
 import retrofit2.Call;
 import retrofit2.Response;
+import ru.hh.consul.ConsulException;
+import ru.hh.consul.async.Callback;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.monitoring.ClientEventHandler;
 
 public class Http {
 

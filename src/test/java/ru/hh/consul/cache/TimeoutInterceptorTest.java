@@ -1,6 +1,5 @@
 package ru.hh.consul.cache;
 
-import ru.hh.consul.config.CacheConfig;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +17,7 @@ import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import ru.hh.consul.config.CacheConfig;
 
 @RunWith(JUnitParamsRunner.class)
 public class TimeoutInterceptorTest {

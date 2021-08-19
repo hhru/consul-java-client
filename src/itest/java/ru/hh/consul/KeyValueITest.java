@@ -1,19 +1,6 @@
 package ru.hh.consul;
 
 import com.google.common.collect.ImmutableSet;
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.model.kv.ImmutableOperation;
-import ru.hh.consul.model.kv.Operation;
-import ru.hh.consul.model.kv.TxResponse;
-import ru.hh.consul.model.kv.Value;
-import ru.hh.consul.model.session.ImmutableSession;
-import ru.hh.consul.model.session.SessionCreatedResponse;
-import ru.hh.consul.option.ConsistencyMode;
-import ru.hh.consul.option.ImmutableDeleteOptions;
-import ru.hh.consul.option.ImmutableQueryOptions;
-import ru.hh.consul.option.PutOptions;
-import ru.hh.consul.option.QueryOptions;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.HashSet;
@@ -35,6 +22,19 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.model.kv.ImmutableOperation;
+import ru.hh.consul.model.kv.Operation;
+import ru.hh.consul.model.kv.TxResponse;
+import ru.hh.consul.model.kv.Value;
+import ru.hh.consul.model.session.ImmutableSession;
+import ru.hh.consul.model.session.SessionCreatedResponse;
+import ru.hh.consul.option.ConsistencyMode;
+import ru.hh.consul.option.ImmutableDeleteOptions;
+import ru.hh.consul.option.ImmutableQueryOptions;
+import ru.hh.consul.option.PutOptions;
+import ru.hh.consul.option.QueryOptions;
 
 public class KeyValueITest extends BaseIntegrationTest {
     private static final Charset TEST_CHARSET = Charset.forName("IBM297");

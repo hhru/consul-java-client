@@ -1,7 +1,7 @@
 package ru.hh.consul.monitoring;
 
-import ru.hh.consul.cache.CacheDescriptor;
 import java.time.Duration;
+import ru.hh.consul.cache.CacheDescriptor;
 
 public interface ClientEventCallback {
 

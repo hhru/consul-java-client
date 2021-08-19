@@ -1,14 +1,6 @@
 package ru.hh.consul;
 
 import com.google.common.collect.ImmutableMap;
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.model.State;
-import ru.hh.consul.model.health.HealthCheck;
-import ru.hh.consul.model.health.ServiceHealth;
-import ru.hh.consul.monitoring.ClientEventCallback;
-import ru.hh.consul.option.QueryOptions;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +11,14 @@ import retrofit2.http.HeaderMap;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.model.State;
+import ru.hh.consul.model.health.HealthCheck;
+import ru.hh.consul.model.health.ServiceHealth;
+import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.option.QueryOptions;
 
 /**
  * HTTP Client for /v1/health/ endpoints.

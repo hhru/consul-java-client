@@ -1,5 +1,15 @@
 package ru.hh.consul;
 
+import java.util.List;
+import java.util.Map;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.model.acl.AclResponse;
 import ru.hh.consul.model.acl.AclToken;
@@ -15,16 +25,6 @@ import ru.hh.consul.model.acl.TokenResponse;
 import ru.hh.consul.monitoring.ClientEventCallback;
 import ru.hh.consul.option.RoleOptions;
 import ru.hh.consul.option.TokenQueryOptions;
-import java.util.List;
-import java.util.Map;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
 
 public class AclClient extends BaseClient {
 

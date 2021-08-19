@@ -1,11 +1,6 @@
 package ru.hh.consul;
 
 import com.google.common.collect.ImmutableMap;
-import ru.hh.consul.config.ClientConfig;
-import ru.hh.consul.model.session.Session;
-import ru.hh.consul.model.session.SessionCreatedResponse;
-import ru.hh.consul.model.session.SessionInfo;
-import ru.hh.consul.monitoring.ClientEventCallback;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +12,11 @@ import retrofit2.http.GET;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
+import ru.hh.consul.config.ClientConfig;
+import ru.hh.consul.model.session.Session;
+import ru.hh.consul.model.session.SessionCreatedResponse;
+import ru.hh.consul.model.session.SessionInfo;
+import ru.hh.consul.monitoring.ClientEventCallback;
 
 /**
  * HTTP Client for /v1/session/ endpoints.

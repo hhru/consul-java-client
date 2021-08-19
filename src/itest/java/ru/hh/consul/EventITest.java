@@ -1,11 +1,11 @@
 package ru.hh.consul;
 
-import ru.hh.consul.model.event.Event;
 import java.time.Duration;
 import org.apache.commons.lang3.RandomStringUtils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import ru.hh.consul.model.event.Event;
 
 public class EventITest extends BaseIntegrationTest {
 

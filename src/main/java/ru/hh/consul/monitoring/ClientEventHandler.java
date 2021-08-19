@@ -1,12 +1,12 @@
 package ru.hh.consul.monitoring;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import ru.hh.consul.cache.CacheDescriptor;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import okhttp3.Request;
+import ru.hh.consul.cache.CacheDescriptor;
 
 public class ClientEventHandler {
 

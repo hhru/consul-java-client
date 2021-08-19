@@ -1,11 +1,11 @@
 package ru.hh.consul.util;
 
+import java.util.Optional;
 import ru.hh.consul.Consul;
 import ru.hh.consul.KeyValueClient;
 import ru.hh.consul.model.kv.Value;
 import ru.hh.consul.model.session.ImmutableSession;
 import ru.hh.consul.model.session.Session;
-import java.util.Optional;
 
 public class LeaderElectionUtil {
 

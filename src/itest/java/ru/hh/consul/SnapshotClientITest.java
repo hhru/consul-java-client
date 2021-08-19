@@ -1,7 +1,5 @@
 package ru.hh.consul;
 
-import ru.hh.consul.async.Callback;
-import ru.hh.consul.option.QueryOptions;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -18,6 +16,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
+import ru.hh.consul.async.Callback;
+import ru.hh.consul.option.QueryOptions;
 
 public class SnapshotClientITest extends BaseIntegrationTest {
 

@@ -1,15 +1,6 @@
 package ru.hh.consul;
 
 import com.google.common.net.HostAndPort;
-import ru.hh.consul.model.acl.ImmutablePolicy;
-import ru.hh.consul.model.acl.ImmutablePolicyLink;
-import ru.hh.consul.model.acl.ImmutableRole;
-import ru.hh.consul.model.acl.ImmutableRolePolicyLink;
-import ru.hh.consul.model.acl.ImmutableToken;
-import ru.hh.consul.model.acl.PolicyResponse;
-import ru.hh.consul.model.acl.RoleResponse;
-import ru.hh.consul.model.acl.Token;
-import ru.hh.consul.model.acl.TokenResponse;
 import java.time.Duration;
 import java.util.Objects;
 import java.util.UUID;
@@ -22,6 +13,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.testcontainers.containers.GenericContainer;
+import ru.hh.consul.model.acl.ImmutablePolicy;
+import ru.hh.consul.model.acl.ImmutablePolicyLink;
+import ru.hh.consul.model.acl.ImmutableRole;
+import ru.hh.consul.model.acl.ImmutableRolePolicyLink;
+import ru.hh.consul.model.acl.ImmutableToken;
+import ru.hh.consul.model.acl.PolicyResponse;
+import ru.hh.consul.model.acl.RoleResponse;
+import ru.hh.consul.model.acl.Token;
+import ru.hh.consul.model.acl.TokenResponse;
 
 public class AclTestIgnore {
 

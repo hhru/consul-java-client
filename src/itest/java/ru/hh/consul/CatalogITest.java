@@ -1,21 +1,5 @@
 package ru.hh.consul;
 
-import ru.hh.consul.async.ConsulResponseCallback;
-import ru.hh.consul.model.ConsulResponse;
-import ru.hh.consul.model.catalog.CatalogDeregistration;
-import ru.hh.consul.model.catalog.CatalogNode;
-import ru.hh.consul.model.catalog.CatalogRegistration;
-import ru.hh.consul.model.catalog.CatalogService;
-import ru.hh.consul.model.catalog.ImmutableCatalogDeregistration;
-import ru.hh.consul.model.catalog.ImmutableCatalogRegistration;
-import ru.hh.consul.model.catalog.ImmutableCatalogService;
-import ru.hh.consul.model.catalog.ImmutableServiceWeights;
-import ru.hh.consul.model.health.ImmutableService;
-import ru.hh.consul.model.health.Node;
-import ru.hh.consul.model.health.Service;
-import ru.hh.consul.model.health.ServiceHealth;
-import ru.hh.consul.option.ImmutableQueryOptions;
-import ru.hh.consul.option.QueryOptions;
 import java.math.BigInteger;
 import java.net.UnknownHostException;
 import java.time.Duration;
@@ -34,6 +18,22 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.hh.consul.async.ConsulResponseCallback;
+import ru.hh.consul.model.ConsulResponse;
+import ru.hh.consul.model.catalog.CatalogDeregistration;
+import ru.hh.consul.model.catalog.CatalogNode;
+import ru.hh.consul.model.catalog.CatalogRegistration;
+import ru.hh.consul.model.catalog.CatalogService;
+import ru.hh.consul.model.catalog.ImmutableCatalogDeregistration;
+import ru.hh.consul.model.catalog.ImmutableCatalogRegistration;
+import ru.hh.consul.model.catalog.ImmutableCatalogService;
+import ru.hh.consul.model.catalog.ImmutableServiceWeights;
+import ru.hh.consul.model.health.ImmutableService;
+import ru.hh.consul.model.health.Node;
+import ru.hh.consul.model.health.Service;
+import ru.hh.consul.model.health.ServiceHealth;
+import ru.hh.consul.option.ImmutableQueryOptions;
+import ru.hh.consul.option.QueryOptions;
 
 public class CatalogITest extends BaseIntegrationTest {
 

@@ -1,9 +1,5 @@
 package ru.hh.consul;
 
-import ru.hh.consul.model.session.ImmutableSession;
-import ru.hh.consul.model.session.Session;
-import ru.hh.consul.model.session.SessionCreatedResponse;
-import ru.hh.consul.model.session.SessionInfo;
 import java.util.List;
 import java.util.UUID;
 import static org.junit.Assert.assertEquals;
@@ -12,6 +8,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
+import ru.hh.consul.model.session.ImmutableSession;
+import ru.hh.consul.model.session.Session;
+import ru.hh.consul.model.session.SessionCreatedResponse;
+import ru.hh.consul.model.session.SessionInfo;
 
 public class SessionClientITest extends BaseIntegrationTest {
 
