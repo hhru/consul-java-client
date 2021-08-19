@@ -530,7 +530,7 @@
 
 - KVClient: PutOptions.getCas should be long, not int [\#107](https://github.com/rickfast/consul-client/issues/107)
 - Support to specify a service-specific IP address [\#106](https://github.com/rickfast/consul-client/issues/106)
-- com.orbitz.consul.model.kv.Value -  This class does not define a public default constructor, or the constructor raised an exception [\#76](https://github.com/rickfast/consul-client/issues/76)
+- Value -  This class does not define a public default constructor, or the constructor raised an exception [\#76](https://github.com/rickfast/consul-client/issues/76)
 
 **Merged pull requests:**
 

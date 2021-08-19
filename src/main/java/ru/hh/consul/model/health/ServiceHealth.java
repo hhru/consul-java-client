@@ -1,0 +1,26 @@
+package ru.hh.consul.model.health;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import org.immutables.value.Value;
+@Value.Immutable
+@JsonSerialize(as = ImmutableServiceHealth.class)
+@JsonDeserialize(as = ImmutableServiceHealth.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public abstract class ServiceHealth {
+
+    @JsonProperty("Node")
+    public abstract Node getNode();
+
+    @JsonProperty("Service")
+    public abstract Service getService();
+
+    @JsonProperty("Checks")
+    @JsonDeserialize(as = ImmutableList.class, contentAs = HealthCheck.class)
+    public abstract List<HealthCheck> getChecks();
+    
+}
