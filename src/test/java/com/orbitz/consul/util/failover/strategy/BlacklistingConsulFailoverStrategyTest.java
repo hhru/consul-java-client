@@ -1,16 +1,14 @@
 package com.orbitz.consul.util.failover.strategy;
 
 import com.google.common.net.HostAndPort;
-import okhttp3.Request;
-import okhttp3.Response;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
-
+import okhttp3.Request;
+import okhttp3.Response;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
 public class BlacklistingConsulFailoverStrategyTest {
     private BlacklistingConsulFailoverStrategy blacklistingConsulFailoverStrategy;

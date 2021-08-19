@@ -3,13 +3,12 @@ package com.orbitz.consul;
 import com.orbitz.consul.config.ClientConfig;
 import com.orbitz.consul.monitoring.ClientEventCallback;
 import com.orbitz.consul.option.QueryOptions;
+import java.util.List;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
-
-import java.util.List;
-import java.util.Map;
 
 public class StatusClient extends BaseClient {
 

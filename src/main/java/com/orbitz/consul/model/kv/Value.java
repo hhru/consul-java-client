@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.io.BaseEncoding;
 import com.orbitz.consul.util.UnsignedLongDeserializer;
-
 import java.nio.charset.Charset;
 import java.util.Optional;
 

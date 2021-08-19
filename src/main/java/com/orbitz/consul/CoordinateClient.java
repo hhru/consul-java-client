@@ -5,14 +5,13 @@ import com.orbitz.consul.config.ClientConfig;
 import com.orbitz.consul.model.coordinate.Coordinate;
 import com.orbitz.consul.model.coordinate.Datacenter;
 import com.orbitz.consul.monitoring.ClientEventCallback;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 /**
  * HTTP Client for /v1/coordinate/ endpoints.

@@ -10,12 +10,17 @@ import com.orbitz.consul.model.catalog.CatalogService;
 import com.orbitz.consul.model.health.Node;
 import com.orbitz.consul.monitoring.ClientEventCallback;
 import com.orbitz.consul.option.QueryOptions;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.http.*;
-
 import java.util.List;
 import java.util.Map;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * HTTP Client for /v1/catalog/ endpoints.

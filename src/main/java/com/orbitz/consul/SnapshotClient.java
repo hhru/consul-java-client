@@ -6,13 +6,6 @@ import com.orbitz.consul.config.ClientConfig;
 import com.orbitz.consul.model.ConsulResponse;
 import com.orbitz.consul.monitoring.ClientEventCallback;
 import com.orbitz.consul.option.QueryOptions;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.http.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +13,17 @@ import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Map;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.PUT;
+import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 
 /**
  * HTTP Client for /v1/snapshot/ endpoints.

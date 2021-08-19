@@ -1,18 +1,5 @@
 package com.orbitz.consul;
 
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.IntSupplier;
-
-import javax.net.ssl.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
@@ -27,7 +14,19 @@ import com.orbitz.consul.util.bookend.ConsulBookend;
 import com.orbitz.consul.util.bookend.ConsulBookendInterceptor;
 import com.orbitz.consul.util.failover.ConsulFailoverInterceptor;
 import com.orbitz.consul.util.failover.strategy.ConsulFailoverStrategy;
-
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.IntSupplier;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.X509TrustManager;
 import okhttp3.ConnectionPool;
 import okhttp3.Dispatcher;
 import okhttp3.HttpUrl;

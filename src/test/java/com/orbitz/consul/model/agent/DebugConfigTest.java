@@ -2,11 +2,9 @@ package com.orbitz.consul.model.agent;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.orbitz.consul.util.Jackson;
-import org.junit.Test;
-
 import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class DebugConfigTest {
     private final String JSON = "{\n" +

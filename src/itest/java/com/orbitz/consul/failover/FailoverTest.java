@@ -1,21 +1,17 @@
 package com.orbitz.consul.failover;
 
+import com.google.common.net.HostAndPort;
 import com.orbitz.consul.BaseIntegrationTest;
-import static org.junit.Assert.assertNotNull;
-
+import com.orbitz.consul.Consul;
+import com.orbitz.consul.Consul.Builder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import com.google.common.net.HostAndPort;
-import com.orbitz.consul.Consul;
-import com.orbitz.consul.Consul.Builder;
-
 import junitparams.JUnitParamsRunner;
 import junitparams.naming.TestCaseName;
+import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
 public class FailoverTest extends BaseIntegrationTest {

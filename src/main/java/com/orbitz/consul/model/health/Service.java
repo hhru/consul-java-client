@@ -6,11 +6,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.collect.ImmutableList;
 import com.orbitz.consul.model.catalog.ServiceWeights;
-import org.immutables.value.Value;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.immutables.value.Value;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutableService.class)

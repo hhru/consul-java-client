@@ -9,16 +9,6 @@ import com.orbitz.consul.monitoring.ClientEventHandler;
 import com.orbitz.consul.option.ConsistencyMode;
 import com.orbitz.consul.option.ImmutableQueryOptions;
 import com.orbitz.consul.option.QueryOptions;
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import junitparams.naming.TestCaseName;
-import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.internal.matchers.GreaterOrEqual;
-import org.mockito.internal.matchers.LessOrEqual;
-
 import java.math.BigInteger;
 import java.time.Duration;
 import java.util.Arrays;
@@ -26,13 +16,21 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+import junitparams.naming.TestCaseName;
+import org.apache.commons.lang3.time.StopWatch;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.is;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import static org.mockito.Mockito.mock;
+import org.mockito.internal.matchers.GreaterOrEqual;
+import org.mockito.internal.matchers.LessOrEqual;
 
 @RunWith(JUnitParamsRunner.class)
 public class ConsulCacheTest {

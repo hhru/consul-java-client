@@ -1,11 +1,11 @@
 package com.orbitz.consul.util;
 
-import java.util.Optional;
 import com.orbitz.consul.Consul;
 import com.orbitz.consul.KeyValueClient;
 import com.orbitz.consul.model.kv.Value;
 import com.orbitz.consul.model.session.ImmutableSession;
 import com.orbitz.consul.model.session.Session;
+import java.util.Optional;
 
 public class LeaderElectionUtil {
 

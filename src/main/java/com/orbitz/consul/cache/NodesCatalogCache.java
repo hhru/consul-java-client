@@ -5,7 +5,6 @@ import com.orbitz.consul.CatalogClient;
 import com.orbitz.consul.config.CacheConfig;
 import com.orbitz.consul.model.health.Node;
 import com.orbitz.consul.option.QueryOptions;
-
 import java.util.concurrent.ScheduledExecutorService;
 
 public class NodesCatalogCache extends ConsulCache<String, Node> {

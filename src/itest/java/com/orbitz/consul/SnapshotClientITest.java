@@ -2,10 +2,6 @@ package com.orbitz.consul;
 
 import com.orbitz.consul.async.Callback;
 import com.orbitz.consul.option.QueryOptions;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,8 +12,12 @@ import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.junit.Assert.*;
+import org.junit.After;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 public class SnapshotClientITest extends BaseIntegrationTest {
 

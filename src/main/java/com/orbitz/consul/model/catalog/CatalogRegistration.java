@@ -4,13 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-
 import com.orbitz.consul.model.agent.Check;
 import com.orbitz.consul.model.health.Service;
+import java.util.Map;
+import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable

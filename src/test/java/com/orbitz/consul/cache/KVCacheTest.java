@@ -10,6 +10,11 @@ import com.orbitz.consul.config.ClientConfig;
 import com.orbitz.consul.model.kv.ImmutableValue;
 import com.orbitz.consul.model.kv.Value;
 import com.orbitz.consul.monitoring.ClientEventCallback;
+import java.time.Duration;
+import java.util.Optional;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
@@ -21,12 +26,6 @@ import retrofit2.Retrofit;
 import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.MockRetrofit;
 import retrofit2.mock.NetworkBehavior;
-
-import java.time.Duration;
-import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 @RunWith(JUnitParamsRunner.class)
 public class KVCacheTest {

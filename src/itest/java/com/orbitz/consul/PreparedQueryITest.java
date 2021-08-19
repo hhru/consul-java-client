@@ -1,16 +1,15 @@
 package com.orbitz.consul;
 
-import java.util.Collections;
-import java.util.Optional;
 import com.google.common.net.HostAndPort;
 import com.orbitz.consul.model.query.ImmutablePreparedQuery;
 import com.orbitz.consul.model.query.ImmutableServiceQuery;
 import com.orbitz.consul.model.query.PreparedQuery;
 import com.orbitz.consul.model.query.StoredQuery;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.UUID;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import java.util.UUID;
 
 public class PreparedQueryITest extends BaseIntegrationTest {
 

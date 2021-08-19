@@ -3,10 +3,9 @@ package com.orbitz.consul.model;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.orbitz.consul.model.event.Event;
-import org.immutables.value.Value;
-
 import java.math.BigInteger;
 import java.util.List;
+import org.immutables.value.Value;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutableEventResponse.class)

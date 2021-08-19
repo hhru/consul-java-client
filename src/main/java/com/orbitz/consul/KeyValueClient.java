@@ -1,11 +1,8 @@
 package com.orbitz.consul;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import java.nio.charset.Charset;
-import java.util.Optional;
-
 import com.google.common.annotations.VisibleForTesting;
+import static com.google.common.base.Preconditions.checkArgument;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.UnsignedLongs;
 import com.orbitz.consul.async.ConsulResponseCallback;
@@ -24,6 +21,13 @@ import com.orbitz.consul.option.PutOptions;
 import com.orbitz.consul.option.QueryOptions;
 import com.orbitz.consul.option.TransactionOptions;
 import com.orbitz.consul.util.Jackson;
+import static com.orbitz.consul.util.Strings.trimLeadingSlash;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import org.apache.commons.lang3.StringUtils;
@@ -32,19 +36,10 @@ import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.orbitz.consul.util.Strings.trimLeadingSlash;
 
 /**
  * HTTP Client for /v1/kv/ endpoints.

@@ -4,14 +4,13 @@ import com.google.common.collect.ImmutableMap;
 import com.orbitz.consul.config.ClientConfig;
 import com.orbitz.consul.model.operator.RaftConfiguration;
 import com.orbitz.consul.monitoring.ClientEventCallback;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
-
-import java.util.Map;
 
 public class OperatorClient extends BaseClient {
 

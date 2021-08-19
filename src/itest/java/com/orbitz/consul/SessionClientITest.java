@@ -4,16 +4,14 @@ import com.orbitz.consul.model.session.ImmutableSession;
 import com.orbitz.consul.model.session.Session;
 import com.orbitz.consul.model.session.SessionCreatedResponse;
 import com.orbitz.consul.model.session.SessionInfo;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.List;
 import java.util.UUID;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 public class SessionClientITest extends BaseIntegrationTest {
 

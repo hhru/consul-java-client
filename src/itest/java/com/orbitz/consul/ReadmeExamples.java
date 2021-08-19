@@ -7,13 +7,12 @@ import com.orbitz.consul.model.agent.ImmutableRegistration;
 import com.orbitz.consul.model.agent.Registration;
 import com.orbitz.consul.model.health.ServiceHealth;
 import com.orbitz.consul.model.kv.Value;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * Examples for "README.md" file.

@@ -1,17 +1,15 @@
 package com.orbitz.consul.option;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import com.google.common.collect.ImmutableList;
-import org.immutables.value.Value;
-
+import static com.orbitz.consul.option.Options.optionallyAdd;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.orbitz.consul.option.Options.optionallyAdd;
+import org.immutables.value.Value;
 
 /**
  * Container for common query options used by the Consul API.

@@ -2,14 +2,11 @@ package com.orbitz.consul.monitoring;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.orbitz.consul.cache.CacheDescriptor;
-import okhttp3.Request;
-
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import okhttp3.Request;
 
 public class ClientEventHandler {
 

@@ -1,8 +1,5 @@
 package com.orbitz.consul;
 
-import java.nio.charset.Charset;
-import java.util.Optional;
-
 import com.google.common.collect.ImmutableSet;
 import com.orbitz.consul.async.ConsulResponseCallback;
 import com.orbitz.consul.model.ConsulResponse;
@@ -14,30 +11,30 @@ import com.orbitz.consul.model.session.ImmutableSession;
 import com.orbitz.consul.model.session.SessionCreatedResponse;
 import com.orbitz.consul.option.ConsistencyMode;
 import com.orbitz.consul.option.ImmutableDeleteOptions;
-import com.orbitz.consul.option.ImmutableQueryOptions;
 import com.orbitz.consul.option.ImmutableDeleteOptions.Builder;
+import com.orbitz.consul.option.ImmutableQueryOptions;
 import com.orbitz.consul.option.PutOptions;
 import com.orbitz.consul.option.QueryOptions;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import java.net.UnknownHostException;
+import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.junit.Assert.assertEquals;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.RandomStringUtils;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
+import org.junit.Test;
 
 public class KeyValueITest extends BaseIntegrationTest {
     private static final Charset TEST_CHARSET = Charset.forName("IBM297");

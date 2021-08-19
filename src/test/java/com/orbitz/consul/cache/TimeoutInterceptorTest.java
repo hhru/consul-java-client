@@ -1,6 +1,9 @@
 package com.orbitz.consul.cache;
 
 import com.orbitz.consul.config.CacheConfig;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
@@ -8,14 +11,13 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.io.IOException;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(JUnitParamsRunner.class)
 public class TimeoutInterceptorTest {

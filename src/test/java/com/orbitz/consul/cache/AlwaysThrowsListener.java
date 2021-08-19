@@ -1,7 +1,6 @@
 package com.orbitz.consul.cache;
 
 import com.orbitz.consul.model.kv.Value;
-
 import java.util.Map;
 
 /**

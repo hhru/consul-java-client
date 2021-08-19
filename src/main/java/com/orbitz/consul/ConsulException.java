@@ -1,9 +1,8 @@
 package com.orbitz.consul;
 
+import java.io.IOException;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-
-import java.io.IOException;
 
 /**
  * Wraps an exception thrown whilst interacting with the Consul API.

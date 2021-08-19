@@ -3,12 +3,10 @@ package com.orbitz.consul.util;
 import com.google.common.io.BaseEncoding;
 import com.orbitz.consul.model.event.Event;
 import com.orbitz.consul.model.event.ImmutableEvent;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Test;
-
 import java.io.IOException;
-
+import org.apache.commons.lang3.RandomStringUtils;
 import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class Base64EncodingDeserializerTest {
 

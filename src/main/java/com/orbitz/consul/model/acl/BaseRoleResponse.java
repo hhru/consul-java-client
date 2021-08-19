@@ -1,9 +1,7 @@
 package com.orbitz.consul.model.acl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.math.BigInteger;
-import java.util.Date;
 import java.util.List;
 
 public abstract class BaseRoleResponse {

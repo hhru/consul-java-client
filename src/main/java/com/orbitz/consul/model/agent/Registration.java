@@ -5,16 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+import static com.google.common.base.Preconditions.checkState;
+import com.orbitz.consul.model.catalog.ServiceWeights;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
-import com.orbitz.consul.model.catalog.ServiceWeights;
 import org.immutables.value.Value;
-
-import java.util.List;
-
-import static com.google.common.base.Preconditions.checkState;
 
 
 @Value.Immutable

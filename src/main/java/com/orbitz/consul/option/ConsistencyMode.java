@@ -1,10 +1,9 @@
 package com.orbitz.consul.option;
 
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
-
-import com.google.common.collect.ImmutableMap;
 
 public class ConsistencyMode {
     public final static ConsistencyMode DEFAULT = new ConsistencyMode("DEFAULT", 0, null);

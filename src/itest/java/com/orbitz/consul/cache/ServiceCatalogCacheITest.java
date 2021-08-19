@@ -2,10 +2,8 @@ package com.orbitz.consul.cache;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.orbitz.consul.BaseIntegrationTest;
-import com.orbitz.consul.model.catalog.CatalogService;
 import com.orbitz.consul.Synchroniser;
-import org.junit.Test;
-
+import com.orbitz.consul.model.catalog.CatalogService;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
@@ -14,8 +12,10 @@ import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 public class ServiceCatalogCacheITest extends BaseIntegrationTest {
 

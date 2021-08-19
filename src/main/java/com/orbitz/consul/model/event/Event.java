@@ -3,8 +3,8 @@ package com.orbitz.consul.model.event;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.util.Optional;
 import com.orbitz.consul.util.Base64EncodingDeserializer;
+import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable

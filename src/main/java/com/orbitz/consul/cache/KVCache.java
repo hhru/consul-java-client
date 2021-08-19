@@ -7,7 +7,6 @@ import com.orbitz.consul.KeyValueClient;
 import com.orbitz.consul.config.CacheConfig;
 import com.orbitz.consul.model.kv.Value;
 import com.orbitz.consul.option.QueryOptions;
-
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
 

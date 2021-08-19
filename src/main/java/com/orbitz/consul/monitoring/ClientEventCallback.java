@@ -1,7 +1,6 @@
 package com.orbitz.consul.monitoring;
 
 import com.orbitz.consul.cache.CacheDescriptor;
-
 import java.time.Duration;
 
 public interface ClientEventCallback {

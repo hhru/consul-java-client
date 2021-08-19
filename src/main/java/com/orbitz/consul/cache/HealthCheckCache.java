@@ -5,7 +5,6 @@ import com.orbitz.consul.HealthClient;
 import com.orbitz.consul.config.CacheConfig;
 import com.orbitz.consul.model.health.HealthCheck;
 import com.orbitz.consul.option.QueryOptions;
-
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
 

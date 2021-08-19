@@ -2,9 +2,8 @@ package com.orbitz.consul.config;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
-import org.slf4j.Logger;
-
 import java.time.Duration;
+import org.slf4j.Logger;
 
 public class CacheConfig {
 

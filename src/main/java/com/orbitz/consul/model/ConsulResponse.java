@@ -2,7 +2,6 @@ package com.orbitz.consul.model;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
-
 import java.math.BigInteger;
 import java.util.Optional;
 

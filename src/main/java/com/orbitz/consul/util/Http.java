@@ -1,20 +1,18 @@
 package com.orbitz.consul.util;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Optional;
 import com.google.common.collect.Sets;
 import com.orbitz.consul.ConsulException;
 import com.orbitz.consul.async.Callback;
 import com.orbitz.consul.async.ConsulResponseCallback;
 import com.orbitz.consul.model.ConsulResponse;
 import com.orbitz.consul.monitoring.ClientEventHandler;
+import java.io.IOException;
+import java.math.BigInteger;
 import okhttp3.Headers;
 import org.apache.commons.lang3.math.NumberUtils;
 import retrofit2.Call;
 import retrofit2.Response;
-
-import java.io.IOException;
-import java.math.BigInteger;
 
 public class Http {
 

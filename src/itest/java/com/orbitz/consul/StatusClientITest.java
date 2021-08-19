@@ -1,8 +1,5 @@
 package com.orbitz.consul;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -15,9 +12,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class StatusClientITest extends BaseIntegrationTest {
 

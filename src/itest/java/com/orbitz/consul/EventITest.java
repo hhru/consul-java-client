@@ -1,13 +1,11 @@
 package com.orbitz.consul;
 
 import com.orbitz.consul.model.event.Event;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Test;
-
 import java.time.Duration;
-
+import org.apache.commons.lang3.RandomStringUtils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 public class EventITest extends BaseIntegrationTest {
 

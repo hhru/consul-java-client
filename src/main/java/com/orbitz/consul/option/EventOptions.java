@@ -1,12 +1,10 @@
 package com.orbitz.consul.option;
 
-import java.util.Optional;
-import org.immutables.value.Value;
-
+import static com.orbitz.consul.option.Options.optionallyAdd;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.orbitz.consul.option.Options.optionallyAdd;
+import java.util.Optional;
+import org.immutables.value.Value;
 
 @Value.Immutable
 public abstract class EventOptions implements ParamAdder {

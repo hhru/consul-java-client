@@ -3,7 +3,6 @@ package com.orbitz.consul.cache;
 import com.orbitz.consul.async.ConsulResponseCallback;
 import com.orbitz.consul.model.ConsulResponse;
 import com.orbitz.consul.model.kv.Value;
-
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;

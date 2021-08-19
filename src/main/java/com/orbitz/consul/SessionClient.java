@@ -6,14 +6,17 @@ import com.orbitz.consul.model.session.Session;
 import com.orbitz.consul.model.session.SessionCreatedResponse;
 import com.orbitz.consul.model.session.SessionInfo;
 import com.orbitz.consul.monitoring.ClientEventCallback;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.http.*;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 /**
  * HTTP Client for /v1/session/ endpoints.

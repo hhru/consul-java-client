@@ -3,12 +3,10 @@ package com.orbitz.consul.util;
 import com.orbitz.consul.BaseIntegrationTest;
 import com.orbitz.consul.Consul;
 import com.orbitz.consul.model.agent.Agent;
-import org.junit.Test;
-
 import java.net.Proxy;
 import java.net.UnknownHostException;
-
 import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 
 public class CustomBuilderITest extends BaseIntegrationTest{
 

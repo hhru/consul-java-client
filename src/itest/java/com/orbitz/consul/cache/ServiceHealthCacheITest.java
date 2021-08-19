@@ -3,16 +3,21 @@ package com.orbitz.consul.cache;
 import com.google.common.collect.ImmutableMap;
 import com.orbitz.consul.BaseIntegrationTest;
 import com.orbitz.consul.HealthClient;
-import com.orbitz.consul.model.health.ServiceHealth;
 import com.orbitz.consul.Synchroniser;
-import org.junit.Test;
-
+import com.orbitz.consul.model.health.ServiceHealth;
 import java.time.Duration;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import org.junit.Test;
 
 public class ServiceHealthCacheITest extends BaseIntegrationTest {
 

@@ -3,9 +3,8 @@ package com.orbitz.consul.util;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.IOException;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Deserializes Consul time values with "s" suffix to {@link Long} objects.

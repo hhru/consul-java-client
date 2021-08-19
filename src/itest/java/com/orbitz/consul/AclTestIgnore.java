@@ -1,16 +1,26 @@
 package com.orbitz.consul;
 
 import com.google.common.net.HostAndPort;
-import com.orbitz.consul.model.acl.*;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import com.orbitz.consul.model.acl.ImmutablePolicy;
+import com.orbitz.consul.model.acl.ImmutablePolicyLink;
+import com.orbitz.consul.model.acl.ImmutableRole;
+import com.orbitz.consul.model.acl.ImmutableRolePolicyLink;
+import com.orbitz.consul.model.acl.ImmutableToken;
+import com.orbitz.consul.model.acl.PolicyResponse;
+import com.orbitz.consul.model.acl.RoleResponse;
+import com.orbitz.consul.model.acl.Token;
+import com.orbitz.consul.model.acl.TokenResponse;
 import java.time.Duration;
-import java.util.*;
-
+import java.util.Objects;
+import java.util.UUID;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.testcontainers.containers.GenericContainer;
 
 public class AclTestIgnore {
