@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.immutables.value.Value;
-import static ru.hh.consul.option.Options.optionallyAdd;
 import static ru.hh.consul.util.Checks.checkArgument;
 
 /**
@@ -26,6 +25,13 @@ public abstract class QueryOptions implements ParamAdder {
     public abstract Optional<BigInteger> getIndex();
     public abstract Optional<String> getNear();
     public abstract Optional<String> getDatacenter();
+    public abstract Optional<String> getFilter();
+    public abstract Optional<String> getNamespace();
+    public abstract Optional<Boolean> getWan();
+    public abstract Optional<String> getSegment();
+    public abstract Optional<String> getNote();
+    public abstract Optional<Boolean> getEnable();
+    public abstract Optional<String> getReason();
     public abstract List<String> getNodeMeta();
     public abstract List<String> getTag();
     public abstract Optional<String> getCaller();
@@ -105,15 +111,22 @@ public abstract class QueryOptions implements ParamAdder {
         }
 
         if (isBlocking()) {
-            optionallyAdd(result, "wait", getWait());
-            optionallyAdd(result, "index", getIndex());
-            optionallyAdd(result, "hash", getHash());
+            Options.optionallyAdd(result, "wait", getWait());
+            Options.optionallyAdd(result, "index", getIndex());
+            Options.optionallyAdd(result, "hash", getHash());
         }
 
-        optionallyAdd(result, "token", getToken());
-        optionallyAdd(result, "near", getNear());
-        optionallyAdd(result, "dc", getDatacenter());
-        optionallyAdd(result, "caller", getCaller());
+        Options.optionallyAdd(result, "token", getToken());
+        Options.optionallyAdd(result, "near", getNear());
+        Options.optionallyAdd(result, "dc", getDatacenter());
+        Options.optionallyAdd(result, "caller", getCaller());
+        Options.optionallyAdd(result, "filter", getFilter());
+        Options.optionallyAdd(result, "ns", getNamespace());
+        Options.optionallyAdd(result, "wan", getWan());
+        Options.optionallyAdd(result, "segment", getSegment());
+        Options.optionallyAdd(result, "note", getNote());
+        Options.optionallyAdd(result, "enable", getEnable());
+        Options.optionallyAdd(result, "reason", getReason());
 
         return result;
     }

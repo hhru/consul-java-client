@@ -32,18 +32,17 @@ public class ServiceCatalogCache extends ConsulCache<String, CatalogService> {
             final int watchSeconds,
             final ScheduledExecutorService callbackExecutorService) {
 
-        Scheduler scheduler = createExternal(callbackExecutorService);
-        return new ServiceCatalogCache(catalogClient, serviceName, queryOptions, watchSeconds, scheduler, null);
+      Scheduler scheduler = createExternal(callbackExecutorService);
+      return new ServiceCatalogCache(catalogClient, serviceName, queryOptions, watchSeconds, scheduler, null);
     }
 
     public static ServiceCatalogCache newCache(
-            CatalogClient catalogClient,
-            String serviceName,
-            QueryOptions queryOptions,
-            int watchSeconds,
-            BigInteger initialIndex,
-            ScheduledExecutorService callbackExecutorService) {
-
+        CatalogClient catalogClient,
+        String serviceName,
+        QueryOptions queryOptions,
+        int watchSeconds,
+        BigInteger initialIndex,
+        ScheduledExecutorService callbackExecutorService) {
       Scheduler scheduler = createExternal(callbackExecutorService);
       return new ServiceCatalogCache(catalogClient, serviceName, queryOptions, watchSeconds, scheduler, initialIndex);
     }
@@ -54,23 +53,23 @@ public class ServiceCatalogCache extends ConsulCache<String, CatalogService> {
             final QueryOptions queryOptions,
             final int watchSeconds) {
 
-        return new ServiceCatalogCache(catalogClient, serviceName, queryOptions, watchSeconds, createDefault(), null);
+      return new ServiceCatalogCache(catalogClient, serviceName, queryOptions, watchSeconds, createDefault(), null);
     }
 
     public static ServiceCatalogCache newCache(
-            CatalogClient catalogClient,
-            String serviceName,
-            QueryOptions queryOptions,
-            int watchSeconds,
-            BigInteger initialIndex) {
+        CatalogClient catalogClient,
+        String serviceName,
+        QueryOptions queryOptions,
+        int watchSeconds,
+        BigInteger initialIndex) {
 
       return new ServiceCatalogCache(catalogClient, serviceName, queryOptions, watchSeconds, createDefault(), initialIndex);
     }
 
     @Deprecated
     public static ServiceCatalogCache newCache(final CatalogClient catalogClient, final String serviceName) {
-        CacheConfig cacheConfig = catalogClient.getConfig().getCacheConfig();
-        int watchSeconds = Math.toIntExact(cacheConfig.getWatchDuration().getSeconds());
-        return newCache(catalogClient, serviceName, QueryOptions.BLANK, watchSeconds);
+      CacheConfig cacheConfig = catalogClient.getConfig().getCacheConfig();
+      int watchSeconds = Math.toIntExact(cacheConfig.getWatchDuration().getSeconds());
+      return newCache(catalogClient, serviceName, QueryOptions.BLANK, watchSeconds);
     }
 }

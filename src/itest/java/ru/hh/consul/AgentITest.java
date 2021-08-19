@@ -1,6 +1,5 @@
 package ru.hh.consul;
 
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -9,9 +8,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -30,6 +29,8 @@ import ru.hh.consul.model.health.HealthCheck;
 import ru.hh.consul.model.health.ImmutableService;
 import ru.hh.consul.model.health.Service;
 import ru.hh.consul.model.health.ServiceHealth;
+import ru.hh.consul.option.ImmutableQueryOptions;
+import ru.hh.consul.option.ImmutableQueryParameterOptions;
 import ru.hh.consul.option.QueryOptions;
 
 public class AgentITest extends BaseIntegrationTest {
@@ -129,6 +130,72 @@ public class AgentITest extends BaseIntegrationTest {
 
     @Test
     @Ignore
+    public void shouldRegisterCheckWithId() throws UnknownHostException, InterruptedException {
+        String serviceName = UUID.randomUUID().toString();
+        String serviceId = UUID.randomUUID().toString();
+        String checkId = UUID.randomUUID().toString();
+
+        Registration registration = ImmutableRegistration.builder()
+                .name(serviceName)
+                .id(serviceId)
+                .addChecks(ImmutableRegCheck.builder()
+                        .id(checkId)
+                        .ttl("10s")
+                        .build())
+                .build();
+
+        client.agentClient().register(registration);
+
+        Synchroniser.pause(Duration.ofMillis(100));
+
+        boolean found = false;
+
+        for (ServiceHealth health : client.healthClient().getAllServiceInstances(serviceName).getResponse()) {
+            if (health.getService().getId().equals(serviceId)) {
+                found = true;
+                assertThat(health.getChecks().size(), is(2));
+                assertTrue(health.getChecks().stream().anyMatch(check -> check.getCheckId().equals(checkId)));
+            }
+        }
+
+        assertTrue(found);
+    }
+
+    @Test
+    @Ignore
+    public void shouldRegisterCheckWithName() throws UnknownHostException, InterruptedException {
+        String serviceName = UUID.randomUUID().toString();
+        String serviceId = UUID.randomUUID().toString();
+        String checkName = UUID.randomUUID().toString();
+
+        Registration registration = ImmutableRegistration.builder()
+                .name(serviceName)
+                .id(serviceId)
+                .addChecks(ImmutableRegCheck.builder()
+                        .name(checkName)
+                        .ttl("10s")
+                        .build())
+                .build();
+
+        client.agentClient().register(registration);
+
+        Synchroniser.pause(Duration.ofMillis(100));
+
+        boolean found = false;
+
+        for (ServiceHealth health : client.healthClient().getAllServiceInstances(serviceName).getResponse()) {
+            if (health.getService().getId().equals(serviceId)) {
+                found = true;
+                assertThat(health.getChecks().size(), is(2));
+                assertTrue(health.getChecks().stream().anyMatch(check -> check.getName().equals(checkName)));
+            }
+        }
+
+        assertTrue(found);
+    }
+
+    @Test
+    @Ignore
     public void shouldRegisterMultipleChecks() throws UnknownHostException, InterruptedException, MalformedURLException {
         String serviceName = UUID.randomUUID().toString();
         String serviceId = UUID.randomUUID().toString();
@@ -193,6 +260,58 @@ public class AgentITest extends BaseIntegrationTest {
     }
 
     @Test
+    public void shouldRegisterChecksFromCleanState() {
+        String serviceName = UUID.randomUUID().toString();
+        String serviceId = UUID.randomUUID().toString();
+
+        List<Registration.RegCheck> regChecks = List.of(
+                Registration.RegCheck.args(Collections.singletonList("/usr/bin/echo \"sup\""), 10, 1, "Custom description."),
+                Registration.RegCheck.http("http://localhost:8080/health", 10, 1, "Custom description."));
+
+        Registration reg = ImmutableRegistration.builder()
+                .checks(regChecks)
+                .address("localhost")
+                .port(8080)
+                .name(serviceName)
+                .id(serviceId)
+                .build();
+
+        client.agentClient().register(reg, QueryOptions.BLANK);
+
+        Synchroniser.pause(Duration.ofMillis(100));
+
+        List<Registration.RegCheck> regCheck = List.of(
+                Registration.RegCheck.args(Collections.singletonList("/usr/bin/echo \"sup\""), 10, 1, "Custom description."));
+
+        Registration secondRegistration = ImmutableRegistration.builder()
+                .checks(regCheck)
+                .address("localhost")
+                .port(8080)
+                .name(serviceName)
+                .id(serviceId)
+                .build();
+
+        ImmutableQueryParameterOptions queryParameterOptions = ImmutableQueryParameterOptions.builder()
+                .replaceExistingChecks(true)
+                .build();
+
+        client.agentClient().register(secondRegistration, QueryOptions.BLANK, queryParameterOptions);
+
+        Synchroniser.pause(Duration.ofMillis(100));
+
+        boolean found = false;
+
+        for (ServiceHealth health : client.healthClient().getAllServiceInstances(serviceName).getResponse()) {
+            if (health.getService().getId().equals(serviceId)) {
+                found = true;
+                assertThat(health.getChecks().size(), is(2));
+            }
+        }
+
+        assertTrue(found);
+    }
+
+    @Test
     public void shouldDeregister() throws UnknownHostException, InterruptedException {
         String serviceName = UUID.randomUUID().toString();
         String serviceId = UUID.randomUUID().toString();
@@ -248,6 +367,43 @@ public class AgentITest extends BaseIntegrationTest {
                 .build();
         Service registeredService = null;
         for (Map.Entry<String, Service> service : client.agentClient().getServices().entrySet()) {
+            if (service.getValue().getId().equals(id)) {
+                registeredService = service.getValue();
+            }
+        }
+
+        assertNotNull(String.format("Service \"%s\" not found", name), registeredService);
+        assertEquals(expectedService, registeredService);
+    }
+
+    @Test
+    public void shouldGetServicesFiltered() {
+        String id = UUID.randomUUID().toString();
+        String name = UUID.randomUUID().toString();
+        List<String> tags = Collections.singletonList(UUID.randomUUID().toString());
+        String metaKey = "MetaKey";
+        String metaValue = UUID.randomUUID().toString();
+        Map<String, String> meta = Collections.singletonMap(metaKey, metaValue);
+        client.agentClient().register(8080, 20L, name, id, tags, meta);
+        Synchroniser.pause(Duration.ofMillis(100));
+
+        Service expectedService = ImmutableService.builder()
+                .id(id)
+                .service(name)
+                .address("")
+                .port(8080)
+                .tags(tags)
+                .meta(meta)
+                .enableTagOverride(false)
+                .weights(ImmutableServiceWeights.builder().warning(1).passing(1).build())
+                .build();
+        Service registeredService = null;
+        Map<String, Service> services = client.agentClient().getServices(
+                ImmutableQueryOptions.builder()
+                        .filter(String.format("Meta.%s == `%s`", metaKey, metaValue))
+                        .build()
+        );
+        for (Map.Entry<String, Service> service : services.entrySet()) {
             if (service.getValue().getId().equals(id)) {
                 registeredService = service.getValue();
             }

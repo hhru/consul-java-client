@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import org.immutables.value.Value;
-import static ru.hh.consul.option.Options.optionallyAdd;
 
 @Value.Immutable
 @Value.Style(jdkOnly = true)
@@ -21,10 +20,10 @@ public abstract class EventOptions implements ParamAdder {
     public Map<String, Object> toQuery() {
         Map<String, Object> result = new HashMap<>();
 
-        optionallyAdd(result, "node", getNodeFilter());
-        optionallyAdd(result, "service", getServiceFilter());
-        optionallyAdd(result, "tag", getTagFilter());
-        optionallyAdd(result, "dc", getDatacenter());
+        Options.optionallyAdd(result, "node", getNodeFilter());
+        Options.optionallyAdd(result, "service", getServiceFilter());
+        Options.optionallyAdd(result, "tag", getTagFilter());
+        Options.optionallyAdd(result, "dc", getDatacenter());
 
         return result;
     }

@@ -1,6 +1,7 @@
 package ru.hh.consul;
 
 import java.util.List;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.Body;
@@ -8,16 +9,22 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.model.acl.AclResponse;
 import ru.hh.consul.model.acl.AclToken;
 import ru.hh.consul.model.acl.AclTokenId;
 import ru.hh.consul.model.acl.Policy;
 import ru.hh.consul.model.acl.PolicyResponse;
+import ru.hh.consul.model.acl.Role;
+import ru.hh.consul.model.acl.RoleListResponse;
+import ru.hh.consul.model.acl.RoleResponse;
 import ru.hh.consul.model.acl.Token;
 import ru.hh.consul.model.acl.TokenListResponse;
 import ru.hh.consul.model.acl.TokenResponse;
 import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.option.RoleOptions;
+import ru.hh.consul.option.TokenQueryOptions;
 
 public class AclClient extends BaseClient {
 
@@ -30,26 +37,32 @@ public class AclClient extends BaseClient {
         this.api = retrofit.create(Api.class);
     }
 
+    @Deprecated
     public String createAcl(AclToken aclToken) {
         return http.extract(api.createAcl(aclToken)).id();
     }
 
+    @Deprecated
     public void updateAcl(AclToken aclToken) {
         http.handle(api.updateAcl(aclToken));
     }
 
+    @Deprecated
     public void destroyAcl(String id) {
         http.handle(api.destroyAcl(id));
     }
 
+    @Deprecated
     public List<AclResponse> getAclInfo(String id) {
         return http.extract(api.getAclInfo(id));
     }
 
+    @Deprecated
     public String cloneAcl(String id) {
         return http.extract(api.cloneAcl(id)).id();
     }
 
+    @Deprecated
     public List<AclResponse> listAcls() {
         return http.extract(api.listAcls());
     }
@@ -60,6 +73,10 @@ public class AclClient extends BaseClient {
 
     public PolicyResponse readPolicy(String id) {
         return http.extract(api.readPolicy(id));
+    }
+
+    public PolicyResponse readPolicyByName(String name) {
+        return http.extract(api.readPolicyByName(name));
     }
 
     public PolicyResponse updatePolicy(String id, Policy policy) {
@@ -78,6 +95,10 @@ public class AclClient extends BaseClient {
         return http.extract(api.createToken(token));
     }
 
+    public TokenResponse cloneToken(String id, Token token) {
+        return http.extract(api.cloneToken(id, token));
+    }
+
     public TokenResponse readToken(String id) {
         return http.extract(api.readToken(id));
     }
@@ -91,30 +112,68 @@ public class AclClient extends BaseClient {
     }
 
     public List<TokenListResponse> listTokens() {
-        return http.extract(api.listTokens());
+        return listTokens(TokenQueryOptions.BLANK);
+    }
+
+    public List<TokenListResponse> listTokens(TokenQueryOptions queryOptions) {
+        return http.extract(api.listTokens(queryOptions.toQuery()));
     }
 
     public void deleteToken(String id) {
         http.extract(api.deleteToken(id));
     }
 
+    public RoleResponse createRole(Role token) {
+        return http.extract(api.createRole(token));
+    }
+
+    public RoleResponse readRole(String id) {
+        return http.extract(api.readRole(id));
+    }
+
+    public RoleResponse readRoleByName(String name) {
+        return http.extract(api.readRoleByName(name));
+    }
+
+    public RoleResponse updateRole(String id, Role role) {
+        return http.extract(api.updateRole(id, role));
+    }
+
+    public List<RoleListResponse> listRoles() {
+        return listRoles(RoleOptions.BLANK);
+    }
+
+    public List<RoleListResponse> listRoles(RoleOptions roleOptions) {
+        return http.extract(api.listRoles(roleOptions.toQuery()));
+    }
+
+    public void deleteRole(String id) {
+        http.extract(api.deleteRole(id));
+    }
+
     interface Api {
 
+        @Deprecated
         @PUT("acl/create")
         Call<AclTokenId> createAcl(@Body AclToken aclToken);
 
+        @Deprecated
         @PUT("acl/update")
         Call<Void> updateAcl(@Body AclToken aclToken);
 
+        @Deprecated
         @PUT("acl/destroy/{id}")
         Call<Void> destroyAcl(@Path("id") String id);
 
+        @Deprecated
         @GET("acl/info/{id}")
         Call<List<AclResponse>> getAclInfo(@Path("id") String id);
 
+        @Deprecated
         @PUT("acl/clone/{id}")
         Call<AclTokenId> cloneAcl(@Path("id") String id);
 
+        @Deprecated
         @GET("acl/list")
         Call<List<AclResponse>> listAcls();
 
@@ -123,6 +182,9 @@ public class AclClient extends BaseClient {
 
         @GET("acl/policy/{id}")
         Call<PolicyResponse> readPolicy(@Path("id") String id);
+
+        @GET("acl/policy/name/{name}")
+        Call<PolicyResponse> readPolicyByName(@Path("name") String name);
 
         @PUT("acl/policy/{id}")
         Call<PolicyResponse> updatePolicy(@Path("id") String id, @Body Policy policy);
@@ -136,6 +198,9 @@ public class AclClient extends BaseClient {
         @PUT("acl/token")
         Call<TokenResponse> createToken(@Body Token token);
 
+        @PUT("acl/token/{id}/clone")
+        Call<TokenResponse> cloneToken(@Path("id") String id, @Body Token token);
+
         @GET("acl/token/{id}")
         Call<TokenResponse> readToken(@Path("id") String id);
 
@@ -143,10 +208,28 @@ public class AclClient extends BaseClient {
         Call<TokenResponse> updateToken(@Path("id") String id, @Body Token token);
 
         @GET("acl/tokens")
-        Call<List<TokenListResponse>> listTokens();
+        Call<List<TokenListResponse>> listTokens(@QueryMap Map<String, Object> query);
 
         @DELETE("acl/token/{id}")
         Call<Void> deleteToken(@Path("id") String id);
+
+        @PUT("acl/role")
+        Call<RoleResponse> createRole(@Body Role role);
+
+        @GET("acl/role/{id}")
+        Call<RoleResponse> readRole(@Path("id") String id);
+
+        @GET("acl/role/name/{name}")
+        Call<RoleResponse> readRoleByName(@Path("name") String name);
+
+        @PUT("acl/role/{id}")
+        Call<RoleResponse> updateRole(@Path("id") String id, @Body Role role);
+
+        @DELETE("acl/role/{id}")
+        Call<Void> deleteRole(@Path("id") String id);
+
+        @GET("acl/roles")
+        Call<List<RoleListResponse>> listRoles(@QueryMap Map<String, Object> query);
     }
 
 }
