@@ -19,14 +19,15 @@ public abstract class BaseIntegrationTest {
 
     public static GenericContainer<?> consulContainer;
     static {
-        consulContainer = new GenericContainer<>("consul")
+        // use latest image after fix issue https://github.com/hashicorp/consul/issues/10945
+        consulContainer = new GenericContainer<>("consul:1.9")
             .withCommand("agent", "-dev", "-client", "0.0.0.0", "--enable-script-checks=true")
             .withExposedPorts(8500);
         consulContainer.start();
     }
     public static GenericContainer<?> consulContainerAcl;
     static {
-        consulContainerAcl = new GenericContainer<>("consul")
+        consulContainerAcl = new GenericContainer<>("consul:1.9")
             .withCommand("agent", "-dev", "-client", "0.0.0.0", "--enable-script-checks=true")
             .withExposedPorts(8500)
             .withEnv("CONSUL_LOCAL_CONFIG",
