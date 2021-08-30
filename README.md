@@ -124,3 +124,22 @@ Development Notes
 This provides a lot of functionality and benefit for little code, but it does require some additional development setup.
 
 Official instructions are [here](http://immutables.github.io/apt.html), although you may want to change the target directories to the more gradle-like "generated/source/apt/main" and  "generated/source/apt/test" targets.
+
+### Integration Tests
+
+Runs consul with [Testcontainers](https://www.testcontainers.org/)
+
+### Eclipse-specific notes
+
+Their instructions for eclipse a bit difficult to grok, but I was able to get eclipse to compile by following the second part of the instructions. Essentially, enable annotation processing, then extend the M2_REPO variable to include the immutables annotation processor. One thing is that documentation is out of date in that it tells you the wrong jar to include - it should be org/immutables/value/2.0.16/value-2.0.16.jar.
+
+![extending M2_REPO](http://cl.ly/image/3F3G2X1.3.4h/Image%202015-09-07%20at%2010%3A28%3A52.png)
+
+### IntelliJ-specific notes
+
+One caveat found using IntelliJ is that you must mark your source directory as a "Generated sources root"
+for IntelliJ to add the contents to your classpath. For example, if you setup your target directory as
+"generated/source/apt/main", right-click on the 'main' subfolde and click "Mark Directory as -> Generated sources root".
+
+Another issue is that upon changes to the build.gradle file or reimporting the gradle project, the "sources root" designation
+may be cleared, and it will need to be re-marked.

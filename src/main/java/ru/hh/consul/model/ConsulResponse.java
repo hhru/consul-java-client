@@ -117,10 +117,10 @@ public class ConsulResponse<T> {
 
         ConsulResponse that = (ConsulResponse) o;
 
-        return Objects.equals(this.response, that.response) &&
-                Objects.equals(this.lastContact, that.lastContact) &&
-                Objects.equals(this.knownLeader, that.knownLeader) &&
-                Objects.equals(this.index, that.index);
+        return Objects.equals(this.response, that.response)
+            && Objects.equals(this.lastContact, that.lastContact)
+            && Objects.equals(this.knownLeader, that.knownLeader)
+            && Objects.equals(this.index, that.index);
     }
 
     @Override

@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.immutables.value.Value;
+
 import java.util.List;
 import java.util.Optional;
-import org.immutables.value.Value;
 
 @Value.Immutable
 @Value.Style(jdkOnly = true)
@@ -16,21 +17,44 @@ import org.immutables.value.Value;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Token {
 
-    @JsonProperty("ID")
+    @JsonProperty("AccessorID")
     public abstract Optional<String> id();
+
+    @JsonProperty("SecretID")
+    public abstract Optional<String> secretId();
 
     @JsonProperty("Description")
     public abstract Optional<String> description();
-
-    @JsonProperty("Local")
-    public abstract boolean local();
 
     @JsonProperty("Policies")
     @JsonDeserialize(as = List.class, contentAs = PolicyLink.class)
     public abstract List<PolicyLink> policies();
 
+    @JsonProperty("Roles")
+    @JsonDeserialize(as = List.class, contentAs = RoleLink.class)
+    public abstract List<RoleLink> roles();
+
+    @JsonProperty("ServiceIdentities")
+    @JsonDeserialize(as = List.class, contentAs = ServiceIdentity.class)
+    public abstract List<ServiceIdentity> serviceIdentities();
+
+    @JsonProperty("NodeIdentities")
+    @JsonDeserialize(as = List.class, contentAs = NodeIdentity.class)
+    public abstract List<NodeIdentity> nodeIdentities();
+
+    @JsonProperty("Local")
+    public abstract Optional<Boolean> local();
+
+    @JsonProperty("ExpirationTime")
+    public abstract Optional<String> expirationTime();
+
+    @JsonProperty("ExpirationTTL")
+    public abstract Optional<String> expirationTTL();
+
+    @JsonProperty("Namespace")
+    public abstract Optional<String> namespace();
+
     @Value.Immutable
-@Value.Style(jdkOnly = true)
     @JsonSerialize(as = ImmutablePolicyLink.class)
     @JsonDeserialize(as = ImmutablePolicyLink.class)
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -41,5 +65,46 @@ public abstract class Token {
 
         @JsonProperty("Name")
         public abstract Optional<String> name();
+    }
+
+    @Value.Immutable
+    @JsonSerialize(as = ImmutableRoleLink.class)
+    @JsonDeserialize(as = ImmutableRoleLink.class)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public abstract static class RoleLink {
+
+        @JsonProperty("ID")
+        public abstract Optional<String> id();
+
+        @JsonProperty("Name")
+        public abstract Optional<String> name();
+    }
+
+    @Value.Immutable
+    @JsonSerialize(as = ImmutableServiceIdentity.class)
+    @JsonDeserialize(as = ImmutableServiceIdentity.class)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public abstract static class ServiceIdentity {
+
+        @JsonProperty("ServiceName")
+        public abstract String name();
+
+        @JsonProperty("Datacenters")
+        @JsonDeserialize(as = List.class, contentAs = String.class)
+        public abstract List<String> datacenters();
+    }
+
+    @Value.Immutable
+    @Value.Style(jdkOnly = true)
+    @JsonSerialize(as = ImmutableNodeIdentity.class)
+    @JsonDeserialize(as = ImmutableNodeIdentity.class)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public abstract static class NodeIdentity {
+
+        @JsonProperty("NodeName")
+        public abstract String name();
+
+        @JsonProperty("Datacenter")
+        public abstract String datacenter();
     }
 }

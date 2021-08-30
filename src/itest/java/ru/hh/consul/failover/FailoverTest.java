@@ -3,14 +3,17 @@ package ru.hh.consul.failover;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import junitparams.JUnitParamsRunner;
 import junitparams.naming.TestCaseName;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import ru.hh.consul.BaseIntegrationTest;
 import ru.hh.consul.Consul;
 import ru.hh.consul.Consul.Builder;
 import ru.hh.consul.util.Address;
 
+@RunWith(JUnitParamsRunner.class)
 public class FailoverTest extends BaseIntegrationTest {
 
 

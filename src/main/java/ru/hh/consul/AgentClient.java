@@ -12,6 +12,7 @@ import retrofit2.http.GET;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
+import retrofit2.http.QueryName;
 import ru.hh.consul.async.ConsulResponseCallback;
 import ru.hh.consul.config.ClientConfig;
 import ru.hh.consul.model.ConsulResponse;
@@ -26,7 +27,9 @@ import ru.hh.consul.model.agent.Registration;
 import ru.hh.consul.model.health.HealthCheck;
 import ru.hh.consul.model.health.Service;
 import ru.hh.consul.monitoring.ClientEventCallback;
+import ru.hh.consul.option.ImmutableQueryOptions;
 import ru.hh.consul.option.QueryOptions;
+import ru.hh.consul.option.QueryParameterOptions;
 import ru.hh.consul.util.Address;
 
 /**
@@ -217,9 +220,14 @@ public class AgentClient extends BaseClient {
      *
      * @param registration The registration payload.
      * @param options An optional QueryOptions instance.
+     * @param queryParameterOptions The Query Parameter Options to use.
      */
+    public void register(Registration registration, QueryOptions options, QueryParameterOptions queryParameterOptions) {
+        http.handle(api.register(registration, options.toQuery(), queryParameterOptions.toQueryParameters()));
+    }
+
     public void register(Registration registration, QueryOptions options) {
-        http.handle(api.register(registration, options.toQuery()));
+        register(registration, options, QueryParameterOptions.BLANK);
     }
 
     public void register(Registration registration) {
@@ -431,7 +439,19 @@ public class AgentClient extends BaseClient {
      * @return Map of Check ID to Checks.
      */
     public Map<String, HealthCheck> getChecks() {
-        return http.extract(api.getChecks());
+        return getChecks(QueryOptions.BLANK);
+    }
+
+    /**
+     * Retrieves all checks registered with the Agent.
+     * <p/>
+     * GET /v1/agent/checks
+     *
+     * @param queryOptions The Query Options to use.
+     * @return Map of Check ID to Checks.
+     */
+    public Map<String, HealthCheck> getChecks(QueryOptions queryOptions) {
+        return http.extract(api.getChecks(queryOptions.toQuery()));
     }
 
     /**
@@ -442,7 +462,19 @@ public class AgentClient extends BaseClient {
      * @return Map of Service ID to Services.
      */
     public Map<String, Service> getServices() {
-        return http.extract(api.getServices());
+        return getServices(QueryOptions.BLANK);
+    }
+
+    /**
+     * Retrieves all services registered with the Agent.
+     * <p/>
+     * GET /v1/agent/services
+     *
+     * @param queryOptions The Query Options to use.
+     * @return Map of Service ID to Services.
+     */
+    public Map<String, Service> getServices(QueryOptions queryOptions) {
+        return http.extract(api.getServices(queryOptions.toQuery()));
     }
 
     /**
@@ -484,7 +516,19 @@ public class AgentClient extends BaseClient {
      * @return List of Members.
      */
     public List<Member> getMembers() {
-        return http.extract(api.getMembers());
+        return getMembers(QueryOptions.BLANK);
+    }
+
+    /**
+     * Retrieves all members that the Agent can see in the gossip pool.
+     * <p/>
+     * GET /v1/agent/members
+     *
+     * @param queryOptions The Query Options to use.
+     * @return List of Members.
+     */
+    public List<Member> getMembers(QueryOptions queryOptions) {
+        return http.extract(api.getMembers(queryOptions.toQuery()));
     }
 
     /**
@@ -492,11 +536,24 @@ public class AgentClient extends BaseClient {
      * <p/>
      * Instructs the agent to force a node into the "left" state.
      *
-     * @param node
+     * @param node Node name
      */
     public void forceLeave(String node) {
-        http.handle(api.forceLeave(node));
+        forceLeave(node, QueryParameterOptions.BLANK);
     }
+
+    /**
+     * GET /v1/agent/force-leave/{node}
+     * <p/>
+     * Instructs the agent to force a node into the "left" state.
+     *
+     * @param node Node name
+     * @param queryParameterOptions The Query Parameters Options to use.
+     */
+    public void forceLeave(String node, QueryParameterOptions queryParameterOptions) {
+        http.handle(api.forceLeave(node, queryParameterOptions.toQueryParameters()));
+    }
+
 
     /**
      * Checks in with Consul.
@@ -507,9 +564,9 @@ public class AgentClient extends BaseClient {
      */
     public void check(String checkId, State state, String note) throws NotRegisteredException {
         try {
-            Map<String, String> query = note == null ? Collections.emptyMap() : Map.of("note", note);
+            ImmutableQueryOptions queryOptions = ImmutableQueryOptions.builder().note(Optional.ofNullable(note)).build();
 
-            http.handle(api.check(state.getPath(), checkId, query));
+            http.handle(api.check(state.getPath(), checkId, queryOptions.toQuery()));
         } catch (Exception ex) {
             throw new NotRegisteredException("Error checking state", ex);
         }
@@ -622,7 +679,7 @@ public class AgentClient extends BaseClient {
     }
 
     /**
-     * GET /v1/agent/join/{address}?wan=1
+     * GET /v1/agent/join/{address}?wan={@code wan}
      *
      * Instructs the agent to join a node.
      *
@@ -631,11 +688,23 @@ public class AgentClient extends BaseClient {
      * @return <code>true</code> if successful, otherwise <code>false</code>.
      */
     public boolean join(String address, boolean wan) {
-        Map<String, String> query = wan ? Map.of("wan", "1") : Collections.emptyMap();
+        return join(address, ImmutableQueryOptions.builder().wan(wan).build());
+    }
+
+    /**
+     * GET /v1/agent/join/{address}?{@code queryOptions}
+     *
+     * Instructs the agent to join a node.
+     *
+     * @param address The address to join.
+     * @param queryOptions The Query Options to use.
+     * @return <code>true</code> if successful, otherwise <code>false</code>.
+     */
+    public boolean join(String address, QueryOptions queryOptions) {
         boolean result = true;
 
         try {
-            http.handle(api.join(address, query));
+            http.handle(api.join(address, queryOptions.toQuery()));
         } catch(Exception ex) {
             result = false;
         }
@@ -651,7 +720,7 @@ public class AgentClient extends BaseClient {
      *               maintenance mode, otherwise <code>false</code>.
      */
     public void toggleMaintenanceMode(String serviceId, boolean enable) {
-        http.handle(api.toggleMaintenanceMode(serviceId, Map.of("enable", Boolean.toString(enable))));
+        toggleMaintenanceMode(serviceId, ImmutableQueryOptions.builder().enable(enable).build());
     }
 
     /**
@@ -665,7 +734,17 @@ public class AgentClient extends BaseClient {
     public void toggleMaintenanceMode(String serviceId,
                                       boolean enable,
                                       String reason) {
-        http.handle(api.toggleMaintenanceMode(serviceId, Map.of("enable", Boolean.toString(enable), "reason", reason)));
+        toggleMaintenanceMode(serviceId, ImmutableQueryOptions.builder().enable(enable).reason(reason).build());
+    }
+
+    /**
+     * Toggles maintenance mode for a service ID.
+     *
+     * @param serviceId The service ID.
+     * @param queryOptions The Query Options to use.
+     */
+    public void toggleMaintenanceMode(String serviceId, QueryOptions queryOptions) {
+        http.handle(api.toggleMaintenanceMode(serviceId, queryOptions.toQuery()));
     }
 
     /**
@@ -675,7 +754,8 @@ public class AgentClient extends BaseClient {
 
         @PUT("agent/service/register")
         Call<Void> register(@Body Registration registration,
-                            @QueryMap Map<String, Object> options);
+                            @QueryMap Map<String, Object> options,
+                            @QueryName List<String> optionsParameters);
 
         @PUT("agent/service/deregister/{serviceId}")
         Call<Void> deregister(@Path("serviceId") String serviceId, @QueryMap Map<String, Object> options);
@@ -686,37 +766,37 @@ public class AgentClient extends BaseClient {
         @PUT("agent/check/deregister/{checkId}")
         Call<Void> deregisterCheck(@Path("checkId") String checkId);
 
-        @GET("agent/self")
+        @GET("status/leader")
         Call<Void> ping();
 
         @GET("agent/self")
         Call<Agent> getAgent();
 
         @GET("agent/checks")
-        Call<Map<String, HealthCheck>> getChecks();
+        Call<Map<String, HealthCheck>> getChecks(@QueryMap Map<String, Object> optionsParameters);
 
         @GET("agent/services")
-        Call<Map<String, Service>> getServices();
+        Call<Map<String, Service>> getServices(@QueryMap Map<String, Object> query);
 
-        @GET("agent/service/{id}")
-        Call<FullService> getService(@Path("id") String id, @QueryMap Map<String, Object> query);
+        @GET("agent/service/{serviceId}")
+        Call<FullService> getService(@Path("serviceId") String id, @QueryMap Map<String, Object> query);
 
         @GET("agent/members")
-        Call<List<Member>> getMembers();
+        Call<List<Member>> getMembers(@QueryMap Map<String, Object> query);
 
         @PUT("agent/force-leave/{node}")
-        Call<Void> forceLeave(@Path("string") String node);
+        Call<Void> forceLeave(@Path("node") String node, @QueryName List<String> optionsParameters);
 
         @PUT("agent/check/{state}/{checkId}")
         Call<Void> check(@Path("state") String state,
                          @Path("checkId") String checkId,
-                         @QueryMap Map<String, String> query);
+                         @QueryMap Map<String, Object> query);
 
         @PUT("agent/join/{address}")
-        Call<Void> join(@Path("address") String address, @QueryMap Map<String, String> query);
+        Call<Void> join(@Path("address") String address, @QueryMap Map<String, Object> query);
 
         @PUT("agent/service/maintenance/{serviceId}")
         Call<Void> toggleMaintenanceMode(@Path("serviceId") String serviceId,
-                                         @QueryMap Map<String, String> query);
+                                         @QueryMap Map<String, Object> query);
     }
 }

@@ -24,30 +24,30 @@ public class NodesCatalogCache extends ConsulCache<String, Node> {
     }
 
     public static NodesCatalogCache newCache(
-            final CatalogClient catalogClient,
-            final QueryOptions queryOptions,
-            final int watchSeconds,
-            final ScheduledExecutorService callbackExecutorService) {
+        final CatalogClient catalogClient,
+        final QueryOptions queryOptions,
+        final int watchSeconds,
+        final ScheduledExecutorService callbackExecutorService) {
 
         Scheduler scheduler = createExternal(callbackExecutorService);
         return new NodesCatalogCache(catalogClient, queryOptions, watchSeconds, scheduler, null);
     }
 
     public static NodesCatalogCache newCache(
-            CatalogClient catalogClient,
-            QueryOptions queryOptions,
-            int watchSeconds,
-            BigInteger initialIndex,
-            ScheduledExecutorService callbackExecutorService) {
+        CatalogClient catalogClient,
+        QueryOptions queryOptions,
+        int watchSeconds,
+        BigInteger initialIndex,
+        ScheduledExecutorService callbackExecutorService) {
 
         Scheduler scheduler = createExternal(callbackExecutorService);
         return new NodesCatalogCache(catalogClient, queryOptions, watchSeconds, scheduler, initialIndex);
     }
 
     public static NodesCatalogCache newCache(
-            final CatalogClient catalogClient,
-            final QueryOptions queryOptions,
-            final int watchSeconds) {
+        final CatalogClient catalogClient,
+        final QueryOptions queryOptions,
+        final int watchSeconds) {
         return new NodesCatalogCache(catalogClient, queryOptions, watchSeconds, createDefault(), null);
     }
 

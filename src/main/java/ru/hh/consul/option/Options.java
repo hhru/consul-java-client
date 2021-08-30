@@ -1,6 +1,7 @@
 package ru.hh.consul.option;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -21,5 +22,13 @@ public class Options {
         }
 
         return result;
+    }
+
+    static void optionallyAdd(List<String> data, String key, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<Boolean> val) {
+        val.ifPresent(value -> {
+            if (value) {
+                data.add(key);
+            }
+        });
     }
 }

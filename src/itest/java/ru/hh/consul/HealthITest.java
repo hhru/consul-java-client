@@ -10,7 +10,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import org.junit.Test;
-import static ru.hh.consul.Consul.builder;
 import ru.hh.consul.model.ConsulResponse;
 import ru.hh.consul.model.State;
 import ru.hh.consul.model.agent.ImmutableRegistration;
@@ -35,7 +34,7 @@ public class HealthITest extends BaseIntegrationTest {
         client.agentClient().register(8080, 20L, serviceName, serviceId, NO_TAGS, NO_META);
         client.agentClient().pass(serviceId);
 
-        Consul client2 = builder().withAddress(new Address(consulContainer.getHost(), consulContainer.getFirstMappedPort())).build();
+        Consul client2 = Consul.builder().withAddress(new Address(consulContainer.getHost(), consulContainer.getFirstMappedPort())).build();
         String serviceId2 = UUID.randomUUID().toString();
 
         client2.agentClient().register(8080, 20L, serviceName, serviceId2, NO_TAGS, NO_META);

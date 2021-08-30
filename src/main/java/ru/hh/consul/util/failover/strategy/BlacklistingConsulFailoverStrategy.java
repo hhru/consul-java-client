@@ -17,7 +17,7 @@ import ru.hh.consul.util.Address;
  */
 public class BlacklistingConsulFailoverStrategy implements ConsulFailoverStrategy {
 
- // The map of blacklisted addresses
+  // The map of blacklisted addresses
   private Map<Address, Instant> blacklist = Collections.synchronizedMap(new HashMap<>());
 
   // The map of viable targets
@@ -74,7 +74,7 @@ public class BlacklistingConsulFailoverStrategy implements ConsulFailoverStrateg
         }
       }).findAny();
 
-      if (!optionalNext.isPresent()) {
+      if (optionalNext.isEmpty()) {
         return Optional.empty();
       }
       Address next = optionalNext.get();

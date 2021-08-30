@@ -9,9 +9,9 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.hh.consul.ConsulException;
-import ru.hh.consul.util.Address;
 import ru.hh.consul.util.failover.strategy.BlacklistingConsulFailoverStrategy;
 import ru.hh.consul.util.failover.strategy.ConsulFailoverStrategy;
+import ru.hh.consul.util.Address;
 
 public class ConsulFailoverInterceptor implements Interceptor {
   private static final Logger LOGGER = LoggerFactory.getLogger(ConsulFailoverInterceptor.class);

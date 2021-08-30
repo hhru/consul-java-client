@@ -71,6 +71,7 @@ public class KeyValueITest extends BaseIntegrationTest {
         var writer = new ObjectMapper().registerModule(new Jdk8Module());
 
         HttpServer server = HttpServer.create(new InetSocketAddress(0), 1);
+        server.createContext("/v1/status/leader", exchange -> exchange.sendResponseHeaders(200, 0));
         server.createContext("/v1/agent/self", exchange -> exchange.sendResponseHeaders(200, 0));
         server.createContext("/v1/kv/key", exchange -> {
             try {
