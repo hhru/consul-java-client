@@ -295,7 +295,8 @@ public class ConsulCache<K, V> implements AutoCloseable {
                 .consistencyMode(queryOptions.getConsistencyMode())
                 .near(queryOptions.getNear())
                 .datacenter(queryOptions.getDatacenter())
-                .caller(queryOptions.getCaller());
+                .caller(queryOptions.getCaller())
+                .header(queryOptions.getHeader());
         for (String tag : queryOptions.getTag()) {
             builder.addTag(tag);
         }
