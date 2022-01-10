@@ -35,6 +35,7 @@ public abstract class QueryOptions implements ParamAdder {
     public abstract List<String> getNodeMeta();
     public abstract List<String> getTag();
     public abstract Optional<String> getCaller();
+    public abstract Optional<Map<String, String>> getHeader();
 
     @Value.Default
     public ConsistencyMode getConsistencyMode() {
@@ -127,12 +128,17 @@ public abstract class QueryOptions implements ParamAdder {
         Options.optionallyAdd(result, "note", getNote());
         Options.optionallyAdd(result, "enable", getEnable());
         Options.optionallyAdd(result, "reason", getReason());
+        Options.optionallyAdd(result, "header", getHeader());
 
         return result;
     }
 
     @Override
     public Map<String, String> toHeaders() {
-        return getConsistencyMode().getAdditionalHeaders();
+        HashMap<String, String> headers = new HashMap<>(getConsistencyMode().getAdditionalHeaders());
+        if (getHeader().isPresent()) {
+            headers.putAll(getHeader().get());
+        }
+        return headers;
     }
 }
