@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.hh.consul.ConsulException;
 import ru.hh.consul.async.ConsulResponseCallback;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.ConsulResponse;
@@ -115,57 +114,52 @@ public class ConsulCache<K, V> implements AutoCloseable {
         this.responseCallback = new ConsulResponseCallback<>() {
             @Override
             public void onComplete(ConsulResponse<List<V>> consulResponse) {
-
-                if (consulResponse.isKnownLeader()) {
-                    if (!isRunning()) {
-                        return;
-                    }
-                    Duration elapsedTime = stopWatch.elapsed();
-                    updateIndex(consulResponse);
-                    LOGGER.debug("Consul cache updated for {} (index={}), request duration: {} ms",
-                            cacheDescriptor, latestIndex, elapsedTime);
-                    LOGGER.debug("Consul response {}", consulResponse);
-
-                    Map<K, V> full = convertToMap(consulResponse);
-
-                    boolean changed = !full.equals(lastResponse.get());
-                    eventHandler.cachePollingSuccess(cacheDescriptor, changed, elapsedTime);
-
-                    if (changed) {
-                        // changes
-                        lastResponse.set(full);
-                        // metadata changes
-                        lastContact.set(consulResponse.getLastContact());
-                        isKnownLeader.set(consulResponse.isKnownLeader());
-
-                        withStartingLock(() -> {
-                            for (Listener<K, V> listener : listeners) {
-                                try {
-                                    listener.notify(full);
-                                } catch (RuntimeException e) {
-                                    LOGGER.warn("ConsulCache Listener's notify method threw an exception.", e);
-                                }
-                            }
-                            return null;
-                        });
-                    }
-
-                    if (state.compareAndSet(State.starting, State.started)) {
-                        initLatch.countDown();
-                    }
-
-                    Duration timeToWait = cacheConfig.getMinimumDurationBetweenRequests();
-                    if ((consulResponse.getResponse() == null || consulResponse.getResponse().isEmpty()) &&
-                            cacheConfig.getMinimumDurationDelayOnEmptyResult().compareTo(timeToWait) > 0) {
-                        timeToWait = cacheConfig.getMinimumDurationDelayOnEmptyResult();
-                    }
-                    timeToWait = timeToWait.minus(elapsedTime);
-
-                    scheduler.schedule(ConsulCache.this::runCallback, timeToWait.toMillis(), TimeUnit.MILLISECONDS);
-
-                } else {
-                    onFailure(new ConsulException("Consul cluster has no elected leader"));
+                if (!isRunning()) {
+                    return;
                 }
+                Duration elapsedTime = stopWatch.elapsed();
+                updateIndex(consulResponse);
+                LOGGER.debug("Consul cache updated for {} (index={}), request duration: {} ms",
+                    cacheDescriptor, latestIndex, elapsedTime);
+                LOGGER.debug("Consul response {}", consulResponse);
+
+                Map<K, V> full = convertToMap(consulResponse);
+
+                boolean changed = !full.equals(lastResponse.get());
+                eventHandler.cachePollingSuccess(cacheDescriptor, changed, elapsedTime);
+
+                if (changed) {
+                    // changes
+                    lastResponse.set(full);
+                    // metadata changes
+                    lastContact.set(consulResponse.getLastContact());
+                    isKnownLeader.set(consulResponse.isKnownLeader());
+
+                    withStartingLock(() -> {
+                        for (Listener<K, V> listener : listeners) {
+                            try {
+                                listener.notify(full);
+                            } catch (RuntimeException e) {
+                                LOGGER.warn("ConsulCache Listener's notify method threw an exception.", e);
+                            }
+                        }
+                        return null;
+                    });
+                }
+
+                if (state.compareAndSet(State.starting, State.started)) {
+                    initLatch.countDown();
+                }
+
+                Duration timeToWait = cacheConfig.getMinimumDurationBetweenRequests();
+                if ((consulResponse.getResponse() == null || consulResponse.getResponse().isEmpty()) &&
+                    cacheConfig.getMinimumDurationDelayOnEmptyResult().compareTo(timeToWait) > 0) {
+                    timeToWait = cacheConfig.getMinimumDurationDelayOnEmptyResult();
+                }
+                timeToWait = timeToWait.minus(elapsedTime);
+
+                scheduler.schedule(ConsulCache.this::runCallback, timeToWait.toMillis(), TimeUnit.MILLISECONDS);
+
             }
 
             @Override
