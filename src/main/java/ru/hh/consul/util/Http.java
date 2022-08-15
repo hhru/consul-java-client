@@ -72,10 +72,10 @@ public class Http {
 
     private <T> void ensureResponseSuccessful(Call<T> call, Response<T> response, Set<Integer> okCodes) {
         if(isSuccessful(response, okCodes)) {
-            eventHandler.httpRequestSuccess(call.request());
+            eventHandler.httpRequestSuccess(call.request(), response);
         } else {
             ConsulException exception = new ConsulException(response.code(), response);
-            eventHandler.httpRequestInvalid(call.request(), exception);
+            eventHandler.httpRequestInvalid(call.request(), response, exception);
             throw exception;
         }
     }
@@ -91,11 +91,11 @@ public class Http {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
                 if (isSuccessful(response, Set.of(okCodes))) {
-                    eventHandler.httpRequestSuccess(call.request());
+                    eventHandler.httpRequestSuccess(call.request(), response);
                     callback.onComplete(consulResponse(response));
                 } else {
                     ConsulException exception = new ConsulException(response.code(), response);
-                    eventHandler.httpRequestInvalid(call.request(), exception);
+                    eventHandler.httpRequestInvalid(call.request(), response, exception);
                     callback.onFailure(exception);
                 }
             }

@@ -5,6 +5,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import okhttp3.Request;
+import retrofit2.Response;
 import ru.hh.consul.cache.CacheDescriptor;
 import ru.hh.consul.util.ThreadFactoryBuilder;
 
@@ -21,18 +22,26 @@ public class ClientEventHandler {
         this.callback = callback;
     }
 
-    public void httpRequestSuccess(Request request) {
-        EVENT_EXECUTOR.submit(() -> callback.onHttpRequestSuccess(clientName, request.method(), request.url().query()));
+    public void httpRequestSuccess(Request request, Response<?> response) {
+        EVENT_EXECUTOR.submit(() -> {
+            callback.onHttpRequestSuccess(clientName, request.method(), request.url().query());
+            callback.onHttpRequestSuccess(clientName, request.method(), request.url().encodedPath(), request.url().query(), response.code());
+        });
     }
 
-    public void httpRequestInvalid(Request request, Throwable throwable) {
-        EVENT_EXECUTOR.submit(() ->
-                callback.onHttpRequestInvalid(clientName, request.method(), request.url().query(), throwable));
+    public void httpRequestInvalid(Request request, Response<?> response, Throwable throwable) {
+        EVENT_EXECUTOR.submit(() -> {
+            callback.onHttpRequestInvalid(clientName, request.method(), request.url().query(), throwable);
+            callback.onHttpRequestInvalid(clientName, request.method(), request.url().encodedPath(), request.url().query(), response.code(),
+                throwable);
+        });
     }
 
     public void httpRequestFailure(Request request, Throwable throwable) {
-        EVENT_EXECUTOR.submit(() ->
-                callback.onHttpRequestFailure(clientName, request.method(), request.url().query(), throwable));
+        EVENT_EXECUTOR.submit(() -> {
+            callback.onHttpRequestFailure(clientName, request.method(), request.url().query(), throwable);
+            callback.onHttpRequestFailure(clientName, request.method(), request.url().encodedPath(), request.url().query(), throwable);
+        });
     }
 
     public void cacheStart(CacheDescriptor cacheDescriptor) {
