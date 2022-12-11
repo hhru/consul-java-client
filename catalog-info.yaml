@@ -1,0 +1,13 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: consul-java-client
+  annotations:
+    github.com/project-slug: hhru/consul-java-client
+  tags:
+    - backend
+    - java
+spec:
+  type: library
+  lifecycle: production
