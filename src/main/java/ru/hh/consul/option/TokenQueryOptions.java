@@ -9,7 +9,7 @@ import org.immutables.value.Value;
  * Container for token query options used by the Consul ACL API.
  */
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 public abstract class TokenQueryOptions implements ParamAdder {
 
     public static final TokenQueryOptions BLANK = ImmutableTokenQueryOptions.builder().build();

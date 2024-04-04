@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableRole.class)
 @JsonDeserialize(as = ImmutableRole.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

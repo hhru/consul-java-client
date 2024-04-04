@@ -9,7 +9,7 @@ import org.immutables.value.Value;
 import ru.hh.consul.model.health.ServiceHealth;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableQueryResults.class)
 @JsonDeserialize(as = ImmutableQueryResults.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

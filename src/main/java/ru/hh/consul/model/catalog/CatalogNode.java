@@ -10,7 +10,7 @@ import ru.hh.consul.model.health.Node;
 import ru.hh.consul.model.health.Service;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableCatalogNode.class)
 @JsonDeserialize(as = ImmutableCatalogNode.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

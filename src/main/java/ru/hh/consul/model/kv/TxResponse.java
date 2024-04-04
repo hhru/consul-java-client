@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @org.immutables.value.Value.Immutable
+@org.immutables.value.Value.Style(jdkOnly = true, jakarta = true)
 @JsonDeserialize(as = ImmutableTxResponse.class)
 @JsonSerialize(as = ImmutableTxResponse.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

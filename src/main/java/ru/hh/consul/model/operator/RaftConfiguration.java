@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @org.immutables.value.Value.Immutable
+@org.immutables.value.Value.Style(jdkOnly = true, jakarta = true)
 @JsonDeserialize(as = ImmutableRaftConfiguration.class)
 @JsonSerialize(as = ImmutableRaftConfiguration.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

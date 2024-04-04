@@ -14,7 +14,7 @@ import static ru.hh.consul.util.Checks.checkArgument;
  * Container for common query options used by the Consul API.
  */
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 public abstract class QueryOptions implements ParamAdder {
 
     public static final QueryOptions BLANK = ImmutableQueryOptions.builder().build();

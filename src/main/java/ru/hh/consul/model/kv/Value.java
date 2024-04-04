@@ -11,7 +11,7 @@ import java.util.Optional;
 import ru.hh.consul.util.UnsignedLongDeserializer;
 
 @org.immutables.value.Value.Immutable
-@org.immutables.value.Value.Style(jdkOnly = true)
+@org.immutables.value.Value.Style(jdkOnly = true, jakarta = true)
 @JsonDeserialize(as = ImmutableValue.class)
 @JsonSerialize(as = ImmutableValue.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

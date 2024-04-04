@@ -1,7 +1,7 @@
 package ru.hh.consul.util;
 
 import static java.lang.String.format;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 public class Checks {
   public static void checkState(boolean expression, @Nullable String errorMessageTemplate, @Nullable Object... errorMessageArgs) {

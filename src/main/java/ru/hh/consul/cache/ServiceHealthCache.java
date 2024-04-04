@@ -3,7 +3,7 @@ package ru.hh.consul.cache;
 import java.math.BigInteger;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import ru.hh.consul.HealthClient;
 import ru.hh.consul.config.CacheConfig;
 import ru.hh.consul.model.health.ServiceHealth;

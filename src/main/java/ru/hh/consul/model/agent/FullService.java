@@ -11,7 +11,7 @@ import org.immutables.value.Value;
 import ru.hh.consul.model.catalog.ServiceWeights;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableFullService.class)
 @JsonDeserialize(as = ImmutableFullService.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 import org.immutables.value.Value;
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableServiceHealth.class)
 @JsonDeserialize(as = ImmutableServiceHealth.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -8,7 +8,7 @@ import ru.hh.consul.model.health.ServiceHealth;
  * Provides a unique key for a {@link ServiceHealth} entry in a {@link ServiceHealthCache}
  */
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ServiceHealthKey {
 

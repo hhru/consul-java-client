@@ -9,7 +9,7 @@ import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableSession.class)
 @JsonDeserialize(as = ImmutableSession.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

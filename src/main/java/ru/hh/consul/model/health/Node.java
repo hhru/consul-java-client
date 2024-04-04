@@ -10,7 +10,7 @@ import org.immutables.value.Value;
 import ru.hh.consul.model.catalog.TaggedAddresses;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableNode.class)
 @JsonDeserialize(as = ImmutableNode.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
