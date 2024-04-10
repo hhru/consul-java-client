@@ -13,7 +13,7 @@ import ru.hh.consul.model.catalog.ServiceWeights;
 import static ru.hh.consul.util.Checks.checkState;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableRegistration.class)
 @JsonDeserialize(as = ImmutableRegistration.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -51,7 +51,7 @@ public abstract class Registration {
     public abstract Optional<ServiceWeights> getServiceWeights();
 
     @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
     @JsonSerialize(as = ImmutableRegCheck.class)
     @JsonDeserialize(as = ImmutableRegCheck.class)
     @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.util.Optional;
 
 @org.immutables.value.Value.Immutable
+@org.immutables.value.Value.Style(jdkOnly = true, jakarta = true)
 @JsonDeserialize(as = ImmutableTxError.class)
 @JsonSerialize(as = ImmutableTxError.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

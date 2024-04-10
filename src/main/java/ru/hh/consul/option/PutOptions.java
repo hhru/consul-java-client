@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 public abstract class PutOptions implements ParamAdder {
     
     public static final PutOptions BLANK = ImmutablePutOptions.builder().build();

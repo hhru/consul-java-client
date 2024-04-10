@@ -11,7 +11,7 @@ import ru.hh.consul.util.Base64EncodingDeserializer;
 import ru.hh.consul.util.Base64EncodingSerializer;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonDeserialize(as = ImmutableOperation.class)
 @JsonSerialize(as = ImmutableOperation.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

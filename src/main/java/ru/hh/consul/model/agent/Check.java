@@ -10,7 +10,7 @@ import org.immutables.value.Value;
 import static ru.hh.consul.util.Checks.checkState;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(as = ImmutableCheck.class)
 @JsonDeserialize(as = ImmutableCheck.class)

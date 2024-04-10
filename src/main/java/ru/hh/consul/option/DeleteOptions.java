@@ -7,7 +7,7 @@ import org.immutables.value.Value;
 import static ru.hh.consul.option.Options.optionallyAdd;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 public abstract class DeleteOptions implements ParamAdder {
 
   public static final DeleteOptions BLANK = ImmutableDeleteOptions.builder().build();

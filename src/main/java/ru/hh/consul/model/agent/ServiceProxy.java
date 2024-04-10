@@ -9,7 +9,7 @@ import java.util.Map;
 import org.immutables.value.Value;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableServiceProxy.class)
 @JsonDeserialize(as = ImmutableServiceProxy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
