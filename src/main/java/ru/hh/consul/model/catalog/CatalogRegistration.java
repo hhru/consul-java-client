@@ -11,7 +11,7 @@ import ru.hh.consul.model.agent.Check;
 import ru.hh.consul.model.health.Service;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableCatalogRegistration.class)
 @JsonDeserialize(as = ImmutableCatalogRegistration.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

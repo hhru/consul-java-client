@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 public abstract class EventOptions implements ParamAdder {
 
     public static final EventOptions BLANK = ImmutableEventOptions.builder().build();

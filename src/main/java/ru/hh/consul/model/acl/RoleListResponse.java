@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableRoleListResponse.class)
 @JsonDeserialize(as = ImmutableRoleListResponse.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

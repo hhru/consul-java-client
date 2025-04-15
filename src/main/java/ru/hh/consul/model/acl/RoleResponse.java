@@ -7,7 +7,7 @@ import org.immutables.value.Value;
 
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableRoleResponse.class)
 @JsonDeserialize(as = ImmutableRoleResponse.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

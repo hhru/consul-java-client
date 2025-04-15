@@ -8,7 +8,7 @@ import java.util.List;
 import org.immutables.value.Value;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(as = ImmutableDatacenter.class)
 @JsonDeserialize(as = ImmutableDatacenter.class)

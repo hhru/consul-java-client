@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableToken.class)
 @JsonDeserialize(as = ImmutableToken.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -95,7 +95,7 @@ public abstract class Token {
     }
 
     @Value.Immutable
-    @Value.Style(jdkOnly = true)
+    @Value.Style(jdkOnly = true, jakarta = true)
     @JsonSerialize(as = ImmutableNodeIdentity.class)
     @JsonDeserialize(as = ImmutableNodeIdentity.class)
     @JsonInclude(JsonInclude.Include.NON_NULL)

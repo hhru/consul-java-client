@@ -10,7 +10,7 @@ import org.immutables.value.Value;
 
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableTelemetry.class)
 @JsonDeserialize(as = ImmutableTelemetry.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @org.immutables.value.Value.Immutable
+@org.immutables.value.Value.Style(jdkOnly = true, jakarta = true)
 @JsonDeserialize(as = ImmutableRaftServer.class)
 @JsonSerialize(as = ImmutableRaftServer.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

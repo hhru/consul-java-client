@@ -11,7 +11,7 @@ import ru.hh.consul.util.SecondsDeserializer;
 import ru.hh.consul.util.SecondsSerializer;
 
 @Value.Immutable
-@Value.Style(jdkOnly = true)
+@Value.Style(jdkOnly = true, jakarta = true)
 @JsonSerialize(as = ImmutableSessionInfo.class)
 @JsonDeserialize(as = ImmutableSessionInfo.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

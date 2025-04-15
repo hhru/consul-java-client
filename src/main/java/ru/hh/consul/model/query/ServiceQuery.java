@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @org.immutables.value.Value.Immutable
+@org.immutables.value.Value.Style(jdkOnly = true, jakarta = true)
 @JsonDeserialize(as = ImmutableServiceQuery.class)
 @JsonSerialize(as = ImmutableServiceQuery.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
