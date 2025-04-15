@@ -1,0 +1,6 @@
+-   name: 2.0.0
+    date: '2025-04-15T16:59:51.003414+03:00'
+    description: Bump public-pom to 2.0.1
+    instructions: Update Java to 17 or higher
+    compatible: false
+
