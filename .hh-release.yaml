@@ -1,5 +1,5 @@
 version: 1.2.12
-build_image: registry.pyn.ru/openjdk11-building:2019.03.14
+build_image: registry.pyn.ru/openjdk17-building:2025.04.09
 docker_files:
   none: none
 build_method: mvn_build
