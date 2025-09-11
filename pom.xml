@@ -3,7 +3,7 @@
     <parent>
         <groupId>ru.hh.public-pom</groupId>
         <artifactId>public-pom</artifactId>
-        <version>2.0.1</version>
+        <version>2.1.1.boot-3.5-alpha1.1-SNAPSHOT</version>
     </parent>
 
     <description>Consul Client for Java</description>
@@ -17,7 +17,9 @@
         <java.version>17</java.version>
 
         <!-- http client -->
-        <retrofit.version>2.9.0</retrofit.version>
+        <retrofit.version>3.0.0</retrofit.version>
+        <!-- TODO Jar Hell Fix, try to remove when do update to the new retrofit version and check conflicts -->
+        <jetbrains.annotations.version>17.0.0</jetbrains.annotations.version>
 
         <!-- test dependencies -->
         <junitparams.version>1.1.1</junitparams.version>
@@ -48,6 +50,13 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
             <version>${retrofit.version}</version>
+        </dependency>
+
+        <!-- TODO Jar Hell Fix, try to remove when do update to the new retrofit version and check conflicts -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${jetbrains.annotations.version}</version>
         </dependency>
 
         <!-- utility -->

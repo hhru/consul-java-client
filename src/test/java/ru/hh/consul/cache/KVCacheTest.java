@@ -108,7 +108,7 @@ public class KVCacheTest {
             final StopWatch stopWatch = new StopWatch();
 
             // Make sure that we wait some duration of time for asynchronous things to occur
-            while (stopWatch.getTime() < 5000 && goodListener.getCallCount() < 1) {
+            while (stopWatch.getDuration().toMillis() < 5000 && goodListener.getCallCount() < 1) {
                 Thread.sleep(50);
             }
 

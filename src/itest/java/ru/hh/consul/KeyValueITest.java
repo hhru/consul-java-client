@@ -541,7 +541,7 @@ public class KeyValueITest extends BaseIntegrationTest {
     public void testBasicTxn() throws Exception {
         KeyValueClient keyValueClient = client.keyValueClient();
         String key = UUID.randomUUID().toString();
-        String value = Base64.encodeBase64String(RandomStringUtils.random(20).getBytes());
+        String value = Base64.encodeBase64String(RandomStringUtils.secure().next(20).getBytes());
         Operation[] operation = new Operation[] {ImmutableOperation.builder().verb("set")
                 .key(key)
                 .value(value).build()};

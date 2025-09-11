@@ -12,7 +12,7 @@ public class Base64EncodingDeserializerTest {
 
     @Test
     public void shouldDeserialize() throws IOException {
-        String value = RandomStringUtils.randomAlphabetic(12);
+        String value = RandomStringUtils.secure().nextAlphabetic(12);
         Event event = ImmutableEvent.builder()
                 .id("1")
                 .lTime(1L)

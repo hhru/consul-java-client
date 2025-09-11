@@ -13,7 +13,7 @@ public class EventITest extends BaseIntegrationTest {
     public void shouldFire() throws InterruptedException {
         EventClient eventClient = client.eventClient();
 
-        String name = RandomStringUtils.random(10, true, true);
+        String name = RandomStringUtils.secure().next(10, true, true);
         Event fired = eventClient.fireEvent(name);
 
         Synchroniser.pause(Duration.ofMillis(100));
@@ -33,8 +33,8 @@ public class EventITest extends BaseIntegrationTest {
     public void shouldFireWithPayload() throws InterruptedException {
         EventClient eventClient = client.eventClient();
 
-        String payload = RandomStringUtils.randomAlphabetic(20);
-        String name = RandomStringUtils.randomAlphabetic(10);
+        String payload = RandomStringUtils.secure().nextAlphabetic(20);
+        String name = RandomStringUtils.secure().nextAlphabetic(10);
         Event fired = eventClient.fireEvent(name, payload);
 
         Synchroniser.pause(Duration.ofMillis(100));
